@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nifemi.vox_populi">
    <application
-        android:label="vox_populi"
+        android:label="Vox Populi"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
