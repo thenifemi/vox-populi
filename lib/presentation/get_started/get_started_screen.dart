@@ -16,7 +16,26 @@ class GetStartedScreen extends StatelessWidget {
         width: widthSize,
         child: Column(
           children: [
-            Expanded(child: Column()),
+            SizedBox(height: heightSize * 0.03),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Hero(
+                        tag: 'logo',
+                        child: Image.asset(
+                          voxIconLogoBlack,
+                          height: 50,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
