@@ -18,8 +18,20 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
+  flutter_native_splash: ^1.0.0
 
-# The following section is specific to Flutter.
+flutter_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/logos/vox_logo_launcher.png"
+
+flutter_native_splash:
+  image: "assets/logos/vox_icon_logo_black.png"
+  color: "#FFFFFF"
+  fullscreen: true
+
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
