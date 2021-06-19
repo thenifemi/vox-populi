@@ -13,11 +13,11 @@ class SplashScreen extends HookWidget {
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;
 
-    final imageSize = useState(heightSize);
+    final imageSize = useState(heightSize * 0.4);
 
     Future rebuidAfter1Second() async {
       Timer(const Duration(seconds: 1), () {
-        imageSize.value = 200;
+        imageSize.value = 200.0;
       });
     }
 
