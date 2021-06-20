@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../splash/splash_screen.dart';
+import '../routes/router.gr.dart';
 
 class App extends StatelessWidget {
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       title: 'Vox Populi',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
+      routerDelegate: _appRouter.delegate(),
     );
   }
 }
