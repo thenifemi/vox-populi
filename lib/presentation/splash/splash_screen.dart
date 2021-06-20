@@ -1,24 +1,19 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../core/constants/image_constants.dart';
-import '../get_started/get_started_screen.dart';
+import '../routes/router.gr.dart';
 
 class SplashScreen extends HookWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   Future<void> navToGetStarted(BuildContext context) async {
     Timer(const Duration(seconds: 1), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const GetStartedScreen(),
-        ),
-      );
+      context.router.replace(const GetStartedScreenRoute());
     });
   }
 
