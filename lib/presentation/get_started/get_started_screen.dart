@@ -1,10 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/presentation/core/theme/theme.dart';
+import 'package:vox_populi/presentation/core/components/app_button.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/constants/image_constants.dart';
+import '../core/theme/theme.dart';
 import 'widgets/get_started_bottom_widget.dart';
 
 class GetStartedScreen extends StatefulWidget {
@@ -68,10 +69,21 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       AutoSizeText(
                         "Know what's\nHappening now.",
                         style: theme?.textTheme.headline4,
+                      ),
+                      const Spacer(),
+                      AutoSizeText(
+                        "Join Vox Populi today.",
+                        style: theme?.textTheme.bodyText2,
+                      ),
+                      const SizedBox(height: 10),
+                      AppButton(
+                        name: 'Get Started',
+                        onPressed: () {},
+                        widthSize: widthSize,
                       ),
                     ],
                   ),

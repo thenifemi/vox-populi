@@ -14,7 +14,7 @@ class App extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<ThemeBloc>()
         ..add(
-          const ThemeEvent.changeTheme(AppTheme.light),
+          const ThemeEvent.changeTheme(AppTheme.dark),
         ),
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {

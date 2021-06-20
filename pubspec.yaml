@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  animated_text_kit: ^4.2.1
   animations: ^2.0.0
   another_flushbar: ^1.10.23
   auto_route: ^2.2.0

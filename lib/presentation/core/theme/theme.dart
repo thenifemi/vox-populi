@@ -34,7 +34,7 @@ final appThemeData = {
       bodyText2: TextStyle(
         fontFamily: 'Ubuntu',
         fontWeight: FontWeight.w600,
-        fontSize: 18.0,
+        fontSize: 20.0,
         color: AppColors.grey,
       ),
       headline6: TextStyle(
@@ -83,7 +83,7 @@ final appThemeData = {
       bodyText2: TextStyle(
         fontFamily: 'Ubuntu',
         fontWeight: FontWeight.w600,
-        fontSize: 18.0,
+        fontSize: 20.0,
         color: AppColors.eggshell,
       ),
       headline6: TextStyle(
