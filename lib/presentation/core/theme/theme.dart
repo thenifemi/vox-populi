@@ -4,7 +4,6 @@ import '../constants/color_constants.dart';
 
 enum AppTheme {
   light,
-
   dark,
 }
 

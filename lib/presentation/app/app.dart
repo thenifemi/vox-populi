@@ -12,11 +12,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ThemeBloc>(),
-      child: MaterialApp.router(
-        title: 'Vox Populi',
-        debugShowCheckedModeBanner: false,
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        routerDelegate: _appRouter.delegate(),
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            title: 'Vox Populi',
+            theme: state.themeData,
+            debugShowCheckedModeBanner: false,
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            routerDelegate: _appRouter.delegate(),
+          );
+        },
       ),
     );
   }
