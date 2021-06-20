@@ -69,7 +69,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: heightSize * 0.03),
                       AutoSizeText(
                         "Know what's\nHappening now.",
                         style: theme?.textTheme.headline4,
@@ -79,7 +79,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                         "Join Vox Populi today.",
                         style: theme?.textTheme.bodyText2,
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: heightSize * 0.02),
                       AppButton(
                         name: 'Get Started',
                         onPressed: () {},

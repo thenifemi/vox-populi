@@ -39,8 +39,9 @@ class AppButton extends StatelessWidget {
             fontFamily: 'Ubuntu',
             fontWeight: FontWeight.w600,
             fontSize: 18.0,
-            color:
-                appTheme == AppTheme.light ? AppColors.white : AppColors.grey,
+            color: appTheme == AppTheme.light
+                ? AppColors.eggshell
+                : AppColors.grey,
           ),
         ),
       ),
