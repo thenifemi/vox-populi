@@ -1,7 +1,11 @@
-import 'package:animations/animations.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vox_populi/presentation/core/theme/theme.dart';
 
+import '../../Application/theme/theme_bloc.dart';
 import '../core/constants/image_constants.dart';
+import 'widgets/get_started_bottom_widget.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
@@ -35,6 +39,9 @@ class _GetStartedScreenState extends State<GetStartedScreen>
 
     _controller?.forward();
 
+    final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
+    final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
+
     return Scaffold(
       body: SizedBox(
         height: heightSize,
@@ -45,19 +52,29 @@ class _GetStartedScreenState extends State<GetStartedScreen>
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(30.0),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Hero(
-                        tag: 'logo',
-                        child: Image.asset(
-                          voxIconLogoBlack,
-                          height: 50,
+                child: SizedBox(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Hero(
+                          tag: 'logo',
+                          child: Image.asset(
+                            appTheme == AppTheme.light
+                                ? voxIconLogoBlack
+                                : voxIconLogoWhite,
+                            height: 50,
+                          ),
                         ),
                       ),
-                    )
-                  ],
+                      const SizedBox(height: 10),
+                      AutoSizeText(
+                        "Know what's\nHappening now.",
+                        style: theme?.textTheme.headline4,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -75,59 +92,5 @@ class _GetStartedScreenState extends State<GetStartedScreen>
   void dispose() {
     _controller?.dispose();
     super.dispose();
-  }
-}
-
-class GetStartedBottomWidget extends StatelessWidget {
-  const GetStartedBottomWidget({
-    Key? key,
-    required AnimationController? controller,
-    required this.widthSize,
-  })  : _controller = controller,
-        super(key: key);
-
-  final AnimationController? _controller;
-  final double widthSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: AnimatedBuilder(
-        animation: _controller!,
-        builder: (context, child) => FadeScaleTransition(
-          animation: _controller!,
-          child: child,
-        ),
-        child: Visibility(
-          visible: _controller?.status != AnimationStatus.dismissed,
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  getStartedBottomBg,
-                ),
-                fit: BoxFit.fill,
-              ),
-            ),
-            child: Stack(
-              children: [
-                Center(
-                  child: Image.asset(
-                    voxLogoBlack,
-                    width: widthSize / 1.26,
-                  ),
-                ),
-                Center(
-                  child: Image.asset(
-                    voxLogoWhite,
-                    width: widthSize / 1.2,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

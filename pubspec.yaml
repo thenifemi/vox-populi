@@ -14,7 +14,7 @@ dependencies:
   animations: ^2.0.0
   another_flushbar: ^1.10.23
   auto_route: ^2.2.0
-  auto_size_text: ^2.1.0
+  auto_size_text: ^3.0.0-nullsafety.0
   bloc: ^7.0.0
   connectivity: ^3.0.6
   cupertino_icons: ^1.0.2
@@ -67,8 +67,8 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Inter
+    - family: Ubuntu
       fonts:
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-        - asset: assets/fonts/Inter/Inter-Bold.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Regular.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Bold.ttf
           weight: 700

@@ -3,8 +3,11 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../Application/theme/theme_bloc.dart';
 import '../core/constants/image_constants.dart';
+import '../core/theme/theme.dart';
 import '../routes/router.gr.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -40,15 +43,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
+
     return FutureBuilder<dynamic>(
         future: rebuidAfter1Second().then(
           (value) => context.router.replace(const GetStartedScreenRoute()),
         ),
         builder: (context, snapshot) {
           return AnnotatedRegion<SystemUiOverlayStyle>(
-            value: const SystemUiOverlayStyle(
+            value: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
-              statusBarIconBrightness: Brightness.dark,
+              statusBarIconBrightness: appTheme == AppTheme.light
+                  ? Brightness.dark
+                  : Brightness.light,
             ),
             child: Scaffold(
               body: Center(
@@ -57,7 +64,11 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: AnimatedContainer(
                     height: imageSize,
                     duration: const Duration(milliseconds: 800),
-                    child: Image.asset(voxIconLogoBlack),
+                    child: Image.asset(
+                      appTheme == AppTheme.light
+                          ? voxIconLogoBlack
+                          : voxIconLogoWhite,
+                    ),
                   ),
                 ),
               ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../../injection.dart';
+import '../core/theme/theme.dart';
 import '../routes/router.gr.dart';
 
 class App extends StatelessWidget {
@@ -11,7 +12,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<ThemeBloc>(),
+      create: (context) => getIt<ThemeBloc>()
+        ..add(
+          const ThemeEvent.changeTheme(AppTheme.light),
+        ),
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
           return MaterialApp.router(

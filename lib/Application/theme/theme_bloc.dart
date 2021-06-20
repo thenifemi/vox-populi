@@ -13,7 +13,9 @@ part 'theme_state.dart';
 
 @injectable
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(_ThemeChanged(appThemeData[AppTheme.light]));
+  ThemeBloc() : super(_ThemeChanged(appThemeData[AppTheme.dark]));
+
+  AppTheme? appTheme;
 
   @override
   Stream<ThemeState> mapEventToState(
@@ -21,6 +23,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ) async* {
     yield* event.map(
       changeTheme: (e) async* {
+        appTheme = e.appTheme;
         yield ThemeState.themeChanged(appThemeData[e.appTheme]);
       },
     );
