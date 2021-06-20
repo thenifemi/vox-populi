@@ -13,20 +13,42 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  another_flushbar: ^1.10.23
+  auto_route: ^2.2.0
+  auto_size_text: ^2.1.0
+  bloc: ^7.0.0
+  connectivity: ^3.0.6
   cupertino_icons: ^1.0.2
+  dartz: ^0.9.2
+  flutter_bloc: ^7.0.1
   flutter_hooks: ^0.17.0
+  flutter_spinkit: ^5.0.0
+  flutter_svg: ^0.22.0
+  freezed_annotation: ^0.14.2
+  get_it: ^7.1.3
+  hive: ^2.0.4
+  hive_flutter: ^1.0.0
+  http: ^0.13.3
+  path_provider: ^2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  analyzer: ^1.7.1
+  auto_route_generator: ^2.1.0
+  build_runner: ^2.0.4
   flutter_launcher_icons: ^0.9.0
   flutter_native_splash: ^1.0.0
+  freezed: ^0.14.2
+  hive_generator: ^1.1.0
+  injectable: ^1.4.1
+  injectable_generator: ^1.4.1
   lint: ^1.5.3
 
 flutter_icons:
   android: true
   ios: true
-  remove_alpha_ios: true
+  remPove_alpha_ios: true
   image_path: "assets/logos/vox_logo_launcher.png"
 
 flutter_native_splash:
