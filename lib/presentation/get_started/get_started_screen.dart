@@ -41,6 +41,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         height: heightSize,
         width: widthSize,
