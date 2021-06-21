@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:vox_populi/presentation/core/theme/theme.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_button.dart';
+import '../core/theme/theme.dart';
 import 'widgets/signin_textfield_widget.dart';
 import 'widgets/signin_top_widget.dart';
 
@@ -62,7 +62,7 @@ class SigninScreen extends HookWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AutoSizeText(
-                          "Prefer Dark mode?",
+                          "Prefer Dark Mode?",
                           style: theme?.textTheme.bodyText2,
                         ),
                         CupertinoSwitch(

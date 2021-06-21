@@ -29,6 +29,7 @@ class SigninTextfieldWidget extends StatelessWidget {
       keyboardType: TextInputType.name,
       textInputAction: TextInputAction.done,
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      textCapitalization: TextCapitalization.words,
       style: theme?.textTheme.bodyText2,
       decoration: InputDecoration(
         hintText: 'Just your first name',
