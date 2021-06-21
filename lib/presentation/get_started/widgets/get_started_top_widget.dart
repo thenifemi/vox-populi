@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/components/app_button.dart';
 import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
+import '../../routes/router.gr.dart';
 
 class GetStartedTopWidget extends StatelessWidget {
   const GetStartedTopWidget({
@@ -53,7 +55,9 @@ class GetStartedTopWidget extends StatelessWidget {
               SizedBox(height: heightSize * 0.02),
               AppButton(
                 name: 'Get Started',
-                onPressed: () {},
+                onPressed: () => context.router.push(
+                  const SigninScreenRoute(),
+                ),
                 widthSize: widthSize,
               ),
             ],

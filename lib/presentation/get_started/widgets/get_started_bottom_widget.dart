@@ -26,30 +26,33 @@ class GetStartedBottomWidget extends StatelessWidget {
         ),
         child: Visibility(
           visible: _controller?.status != AnimationStatus.dismissed,
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  getStartedBottomBg,
+          child: Hero(
+            tag: 'vox',
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    getStartedBottomBg,
+                  ),
+                  fit: BoxFit.fill,
                 ),
-                fit: BoxFit.fill,
               ),
-            ),
-            child: Stack(
-              children: [
-                Center(
-                  child: Image.asset(
-                    voxLogoBlack,
-                    width: widthSize / 1.26,
+              child: Stack(
+                children: [
+                  Center(
+                    child: Image.asset(
+                      voxLogoBlack,
+                      width: widthSize / 1.26,
+                    ),
                   ),
-                ),
-                Center(
-                  child: Image.asset(
-                    voxLogoWhite,
-                    width: widthSize / 1.2,
+                  Center(
+                    child: Image.asset(
+                      voxLogoWhite,
+                      width: widthSize / 1.2,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
