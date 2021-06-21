@@ -66,6 +66,8 @@ flutter:
     - assets/logos/
     - assets/gifs/
     - assets/images/
+    - assets/avatars/
+    - assets/icons/
 
   fonts:
     - family: Ubuntu
