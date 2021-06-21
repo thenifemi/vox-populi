@@ -18,5 +18,12 @@ Future<void> main() async {
   Hive.registerAdapter(UserAdapter());
   Hive.registerAdapter(AppThemeAdapter());
 
-  runApp(App());
+  final appThemeBox = await Hive.openBox<AppTheme>('appTheme');
+
+  if (appThemeBox.isEmpty) {
+    appThemeBox.put(0, AppTheme.light);
+    runApp(App(appTheme: appThemeBox.get(0)));
+  } else {
+    runApp(App(appTheme: appThemeBox.get(0)));
+  }
 }
