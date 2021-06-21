@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hive/hive.dart';
-import 'package:vox_populi/Domain/user/user.dart';
 
 import '../../Application/theme/theme_bloc.dart';
+import '../../Domain/user/user.dart';
 import '../core/components/app_button.dart';
 import '../core/theme/theme.dart';
 import 'widgets/signin_textfield_widget.dart';
@@ -67,8 +67,6 @@ class SigninScreen extends HookWidget {
                           final appThemeBox =
                               await Hive.openBox<AppTheme>('appTheme');
                           appThemeBox.put(0, appTheme!);
-
-                          print(userBox.get(0)?.name);
                         },
                         validator: (v) {
                           if (v!.isEmpty) {
