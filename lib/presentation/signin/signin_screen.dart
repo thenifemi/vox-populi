@@ -69,7 +69,6 @@ class SigninScreen extends HookWidget {
                           appThemeBox.put(0, appTheme!);
 
                           print(userBox.get(0)?.name);
-                          print(appThemeBox.get(0).toString());
                         },
                         validator: (v) {
                           if (v!.isEmpty) {
