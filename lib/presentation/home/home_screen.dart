@@ -17,39 +17,43 @@ class HomeScreen extends StatelessWidget {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
-    return Container(
-      height: heightSize,
-      width: widthSize,
-      padding: const EdgeInsets.all(30.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Hero(
-                tag: 'logo',
-                child: Image.asset(
-                  appTheme == AppTheme.light
-                      ? voxIconLogoBlack
-                      : voxIconLogoWhite,
-                  height: 50,
+    return Scaffold(
+      body: Container(
+        height: heightSize,
+        width: widthSize,
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            SizedBox(height: heightSize * 0.03),
+            Row(
+              children: [
+                Hero(
+                  tag: 'logo',
+                  child: Image.asset(
+                    appTheme == AppTheme.light
+                        ? voxIconLogoBlack
+                        : voxIconLogoWhite,
+                    height: 50,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                children: [
-                  AutoSizeText(
-                    "monday 21 June".toUpperCase(),
-                    style: theme?.textTheme.bodyText2,
-                  ),
-                  AutoSizeText(
-                    "Today",
-                    style: theme?.textTheme.headline4,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(
+                      "monday 21 June".toUpperCase(),
+                      style: theme?.textTheme.bodyText1,
+                    ),
+                    AutoSizeText(
+                      "Today",
+                      style: theme?.textTheme.headline5,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

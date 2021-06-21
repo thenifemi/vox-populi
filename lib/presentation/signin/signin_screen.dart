@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
 import '../core/components/app_button.dart';
 import '../core/theme/theme.dart';
+import '../routes/router.gr.dart';
 import 'widgets/signin_textfield_widget.dart';
 import 'widgets/signin_top_widget.dart';
 
@@ -67,6 +69,8 @@ class SigninScreen extends HookWidget {
                           final appThemeBox =
                               await Hive.openBox<AppTheme>('appTheme');
                           appThemeBox.put(0, appTheme!);
+
+                          context.router.push(const HomeScreenRoute());
                         },
                         validator: (v) {
                           if (v!.isEmpty) {

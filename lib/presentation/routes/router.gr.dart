@@ -5,10 +5,11 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/cupertino.dart' as _i6;
+import 'package:flutter/cupertino.dart' as _i7;
 import 'package:flutter/material.dart' as _i2;
 
 import '../get_started/get_started_screen.dart' as _i4;
+import '../home/home_screen.dart' as _i6;
 import '../signin/signin_screen.dart' as _i5;
 import '../splash/splash_screen.dart' as _i3;
 
@@ -34,6 +35,11 @@ class AppRouter extends _i1.RootStackRouter {
           final args = data.argsAs<SigninScreenRouteArgs>(
               orElse: () => const SigninScreenRouteArgs());
           return _i5.SigninScreen(key: args.key);
+        }),
+    HomeScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i6.HomeScreen();
         })
   };
 
@@ -42,7 +48,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SplashScreenRoute.name, path: '/'),
         _i1.RouteConfig(GetStartedScreenRoute.name,
             path: '/get-started-screen'),
-        _i1.RouteConfig(SigninScreenRoute.name, path: '/signin-screen')
+        _i1.RouteConfig(SigninScreenRoute.name, path: '/signin-screen'),
+        _i1.RouteConfig(HomeScreenRoute.name, path: '/home-screen')
       ];
 }
 
@@ -59,7 +66,7 @@ class GetStartedScreenRoute extends _i1.PageRouteInfo {
 }
 
 class SigninScreenRoute extends _i1.PageRouteInfo<SigninScreenRouteArgs> {
-  SigninScreenRoute({_i6.Key? key})
+  SigninScreenRoute({_i7.Key? key})
       : super(name,
             path: '/signin-screen', args: SigninScreenRouteArgs(key: key));
 
@@ -69,5 +76,11 @@ class SigninScreenRoute extends _i1.PageRouteInfo<SigninScreenRouteArgs> {
 class SigninScreenRouteArgs {
   const SigninScreenRouteArgs({this.key});
 
-  final _i6.Key? key;
+  final _i7.Key? key;
+}
+
+class HomeScreenRoute extends _i1.PageRouteInfo {
+  const HomeScreenRoute() : super(name, path: '/home-screen');
+
+  static const String name = 'HomeScreenRoute';
 }

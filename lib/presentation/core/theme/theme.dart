@@ -33,7 +33,7 @@ final appThemeData = {
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
-        fontWeight: FontWeight.w500,
+        // fontWeight: FontWeight.w500,
         fontSize: 16.0,
         color: AppColors.grey,
       ),
@@ -52,7 +52,7 @@ final appThemeData = {
       headline5: TextStyle(
         fontFamily: 'Ubuntu',
         fontWeight: FontWeight.w600,
-        fontSize: 22.0,
+        fontSize: 30.0,
         color: AppColors.grey,
       ),
       headline4: TextStyle(
@@ -101,7 +101,7 @@ final appThemeData = {
       headline5: TextStyle(
         fontFamily: 'Ubuntu',
         fontWeight: FontWeight.w600,
-        fontSize: 22.0,
+        fontSize: 30.0,
         color: AppColors.eggshell,
       ),
       headline4: TextStyle(
