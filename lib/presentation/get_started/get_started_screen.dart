@@ -1,12 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/presentation/core/components/app_button.dart';
 
 import '../../Application/theme/theme_bloc.dart';
-import '../core/constants/image_constants.dart';
-import '../core/theme/theme.dart';
 import 'widgets/get_started_bottom_widget.dart';
+import 'widgets/get_started_top_widget.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
@@ -50,45 +47,11 @@ class _GetStartedScreenState extends State<GetStartedScreen>
         child: Column(
           children: [
             SizedBox(height: heightSize * 0.03),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: SizedBox(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Hero(
-                          tag: 'logo',
-                          child: Image.asset(
-                            appTheme == AppTheme.light
-                                ? voxIconLogoBlack
-                                : voxIconLogoWhite,
-                            height: 50,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: heightSize * 0.03),
-                      AutoSizeText(
-                        "Know what's\nHappening now.",
-                        style: theme?.textTheme.headline4,
-                      ),
-                      const Spacer(),
-                      AutoSizeText(
-                        "Join Vox Populi today.",
-                        style: theme?.textTheme.bodyText2,
-                      ),
-                      SizedBox(height: heightSize * 0.02),
-                      AppButton(
-                        name: 'Get Started',
-                        onPressed: () {},
-                        widthSize: widthSize,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            GetStartedTopWidget(
+              appTheme: appTheme,
+              heightSize: heightSize,
+              theme: theme,
+              widthSize: widthSize,
             ),
             GetStartedBottomWidget(
               controller: _controller,

@@ -13,7 +13,7 @@ part 'theme_state.dart';
 
 @injectable
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(_ThemeChanged(appThemeData[AppTheme.dark]));
+  ThemeBloc() : super(_ThemeChanged(appThemeData[AppTheme.light]));
 
   AppTheme? appTheme;
 

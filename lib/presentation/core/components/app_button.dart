@@ -26,6 +26,7 @@ class AppButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          elevation: 0.0,
           primary: appTheme == AppTheme.light
               ? AppColors.greyAccent
               : AppColors.eggshell,
