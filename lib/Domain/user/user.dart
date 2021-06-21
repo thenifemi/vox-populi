@@ -18,6 +18,7 @@ class User {
   User({
     @required this.name,
   });
+
   @HiveField(0)
   String? name;
 

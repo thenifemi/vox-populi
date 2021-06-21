@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../constants/color_constants.dart';
 
+part 'theme.g.dart';
+
+@HiveType(typeId: 1)
 enum AppTheme {
+  @HiveField(0)
   light,
+  @HiveField(1)
   dark,
 }
 

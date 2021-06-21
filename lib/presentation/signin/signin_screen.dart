@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hive/hive.dart';
+import 'package:vox_populi/Domain/user/user.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_button.dart';
@@ -58,7 +60,14 @@ class SigninScreen extends HookWidget {
                       ),
                       SizedBox(height: heightSize * 0.03),
                       SigninTextfieldWidget(
-                        onSaved: (v) {},
+                        onSaved: (v) async {
+                          final userBox = await Hive.openBox<User>('user');
+                          userBox.put(0, User(name: v));
+
+                          final appThemeBox =
+                              await Hive.openBox<AppTheme>('appTheme');
+                          appThemeBox.put(0, appTheme!);
+                        },
                         validator: (v) {
                           if (v!.isEmpty) {
                             return 'Sorry, cannot be empty.';
@@ -90,7 +99,13 @@ class SigninScreen extends HookWidget {
                       SizedBox(height: heightSize * 0.02),
                       AppButton(
                         name: 'Finish',
-                        onPressed: () {},
+                        onPressed: () {
+                          final form = formKey.currentState;
+
+                          if (form!.validate()) {
+                            form.save();
+                          }
+                        },
                         widthSize: widthSize,
                       ),
                       const Spacer(),
