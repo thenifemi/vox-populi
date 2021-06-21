@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:flutter/cupertino.dart' as _i6;
 import 'package:flutter/material.dart' as _i2;
 
 import '../get_started/get_started_screen.dart' as _i4;
@@ -29,8 +30,10 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     SigninScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i5.SigninScreen();
+        builder: (data) {
+          final args = data.argsAs<SigninScreenRouteArgs>(
+              orElse: () => const SigninScreenRouteArgs());
+          return _i5.SigninScreen(key: args.key);
         })
   };
 
@@ -55,8 +58,16 @@ class GetStartedScreenRoute extends _i1.PageRouteInfo {
   static const String name = 'GetStartedScreenRoute';
 }
 
-class SigninScreenRoute extends _i1.PageRouteInfo {
-  const SigninScreenRoute() : super(name, path: '/signin-screen');
+class SigninScreenRoute extends _i1.PageRouteInfo<SigninScreenRouteArgs> {
+  SigninScreenRoute({_i6.Key? key})
+      : super(name,
+            path: '/signin-screen', args: SigninScreenRouteArgs(key: key));
 
   static const String name = 'SigninScreenRoute';
+}
+
+class SigninScreenRouteArgs {
+  const SigninScreenRouteArgs({this.key});
+
+  final _i6.Key? key;
 }

@@ -56,7 +56,7 @@ class GetStartedTopWidget extends StatelessWidget {
               AppButton(
                 name: 'Get Started',
                 onPressed: () => context.router.push(
-                  const SigninScreenRoute(),
+                  SigninScreenRoute(),
                 ),
                 widthSize: widthSize,
               ),

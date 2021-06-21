@@ -11,7 +11,9 @@ import 'widgets/signin_textfield_widget.dart';
 import 'widgets/signin_top_widget.dart';
 
 class SigninScreen extends HookWidget {
-  const SigninScreen({Key? key}) : super(key: key);
+  SigninScreen({Key? key}) : super(key: key);
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,51 +47,59 @@ class SigninScreen extends HookWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(30.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      "All we need is\nyour name.",
-                      style: theme?.textTheme.headline4,
-                    ),
-                    SizedBox(height: heightSize * 0.03),
-                    SigninTextfieldWidget(
-                      onSaved: (v) {},
-                      validator: (v) {},
-                    ),
-                    SizedBox(height: heightSize * 0.02),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AutoSizeText(
-                          "Prefer Dark Mode?",
-                          style: theme?.textTheme.bodyText2,
-                        ),
-                        CupertinoSwitch(
-                          value: switcher.value,
-                          onChanged: (v) {
-                            switcher.value = v;
-                            BlocProvider.of<ThemeBloc>(context).add(
-                              ThemeEvent.changeTheme(
-                                v == true ? AppTheme.dark : AppTheme.light,
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: heightSize * 0.02),
-                    AppButton(
-                      name: 'Finish',
-                      onPressed: () {},
-                      widthSize: widthSize,
-                    ),
-                    const Spacer(),
-                    AutoSizeText(
-                      "All your data is stored securely on your device, we do not collect any data.",
-                      style: theme?.textTheme.bodyText1,
-                    ),
-                  ],
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        "All we need is\nyour name.",
+                        style: theme?.textTheme.headline4,
+                      ),
+                      SizedBox(height: heightSize * 0.03),
+                      SigninTextfieldWidget(
+                        onSaved: (v) {},
+                        validator: (v) {
+                          if (v!.isEmpty) {
+                            return 'Sorry, cannot be empty.';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: heightSize * 0.02),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          AutoSizeText(
+                            "Prefer Dark Mode?",
+                            style: theme?.textTheme.bodyText2,
+                          ),
+                          CupertinoSwitch(
+                            value: switcher.value,
+                            onChanged: (v) {
+                              switcher.value = v;
+                              BlocProvider.of<ThemeBloc>(context).add(
+                                ThemeEvent.changeTheme(
+                                  v == true ? AppTheme.dark : AppTheme.light,
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: heightSize * 0.02),
+                      AppButton(
+                        name: 'Finish',
+                        onPressed: () {},
+                        widthSize: widthSize,
+                      ),
+                      const Spacer(),
+                      AutoSizeText(
+                        "All your data is stored securely on your device, we do not collect any data.",
+                        style: theme?.textTheme.bodyText1,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
