@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
+import '../core/theme/theme.dart';
 import 'widgets/get_started_bottom_widget.dart';
 import 'widgets/get_started_top_widget.dart';
 
@@ -40,25 +42,32 @@ class _GetStartedScreenState extends State<GetStartedScreen>
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SizedBox(
-        height: heightSize,
-        width: widthSize,
-        child: Column(
-          children: [
-            SizedBox(height: heightSize * 0.03),
-            GetStartedTopWidget(
-              appTheme: appTheme,
-              heightSize: heightSize,
-              theme: theme,
-              widthSize: widthSize,
-            ),
-            GetStartedBottomWidget(
-              controller: _controller,
-              widthSize: widthSize,
-            ),
-          ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness:
+            appTheme == AppTheme.light ? Brightness.dark : Brightness.light,
+      ),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SizedBox(
+          height: heightSize,
+          width: widthSize,
+          child: Column(
+            children: [
+              SizedBox(height: heightSize * 0.03),
+              GetStartedTopWidget(
+                appTheme: appTheme,
+                heightSize: heightSize,
+                theme: theme,
+                widthSize: widthSize,
+              ),
+              GetStartedBottomWidget(
+                controller: _controller,
+                widthSize: widthSize,
+              ),
+            ],
+          ),
         ),
       ),
     );

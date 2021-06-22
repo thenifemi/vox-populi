@@ -26,10 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-  Future<void> navToGetStarted() async {
-    context.router.replace(const GetStartedScreenRoute());
-  }
-
   Future rebuidAfter1Second() async {
     return Future.delayed(const Duration(seconds: 1), () {
       setState(() {
@@ -50,25 +46,17 @@ class _SplashScreenState extends State<SplashScreen> {
           (value) => context.router.replace(const GetStartedScreenRoute()),
         ),
         builder: (context, snapshot) {
-          return AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-              statusBarIconBrightness: appTheme == AppTheme.light
-                  ? Brightness.dark
-                  : Brightness.light,
-            ),
-            child: Scaffold(
-              body: Center(
-                child: Hero(
-                  tag: 'logo',
-                  child: AnimatedContainer(
-                    height: imageSize,
-                    duration: const Duration(milliseconds: 800),
-                    child: Image.asset(
-                      appTheme == AppTheme.light
-                          ? voxIconLogoBlack
-                          : voxIconLogoWhite,
-                    ),
+          return Scaffold(
+            body: Center(
+              child: Hero(
+                tag: 'logo',
+                child: AnimatedContainer(
+                  height: imageSize,
+                  duration: const Duration(milliseconds: 800),
+                  child: Image.asset(
+                    appTheme == AppTheme.light
+                        ? voxIconLogoBlack
+                        : voxIconLogoWhite,
                   ),
                 ),
               ),

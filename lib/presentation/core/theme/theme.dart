@@ -33,7 +33,6 @@ final appThemeData = {
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
-        // fontWeight: FontWeight.w500,
         fontSize: 16.0,
         color: AppColors.grey,
       ),
@@ -82,7 +81,6 @@ final appThemeData = {
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
-        fontWeight: FontWeight.w500,
         fontSize: 16.0,
         color: AppColors.eggshell,
       ),
