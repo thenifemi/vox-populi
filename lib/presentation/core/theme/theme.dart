@@ -29,6 +29,10 @@ final appThemeData = {
     tabBarTheme: const TabBarTheme(
       labelColor: AppColors.eggshell,
       unselectedLabelColor: AppColors.greyAccent,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelPadding: EdgeInsets.symmetric(
+        horizontal: 10.0,
+      ),
     ),
     textTheme: const TextTheme(
       subtitle1: TextStyle(
@@ -82,6 +86,10 @@ final appThemeData = {
     tabBarTheme: const TabBarTheme(
       labelColor: AppColors.eggshell,
       unselectedLabelColor: AppColors.greyAccent,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelPadding: EdgeInsets.symmetric(
+        horizontal: 10.0,
+      ),
     ),
     textTheme: const TextTheme(
       subtitle1: TextStyle(
