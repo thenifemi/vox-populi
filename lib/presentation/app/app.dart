@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
@@ -23,20 +22,12 @@ class App extends StatelessWidget {
       child: BlocBuilder<ThemeBloc, ThemeState>(
         buildWhen: (p, c) => p != c,
         builder: (context, state) {
-          return AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-              statusBarIconBrightness: appTheme == AppTheme.light
-                  ? Brightness.dark
-                  : Brightness.light,
-            ),
-            child: MaterialApp.router(
-              title: 'Vox Populi',
-              theme: state.themeData,
-              debugShowCheckedModeBanner: false,
-              routeInformationParser: _appRouter.defaultRouteParser(),
-              routerDelegate: _appRouter.delegate(),
-            ),
+          return MaterialApp.router(
+            title: 'Vox Populi',
+            theme: state.themeData,
+            debugShowCheckedModeBanner: false,
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            routerDelegate: _appRouter.delegate(),
           );
         },
       ),

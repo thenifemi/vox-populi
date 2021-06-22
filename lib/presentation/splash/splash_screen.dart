@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
+import '../core/components/app_annotated_widget.dart';
 import '../core/constants/image_constants.dart';
 import '../core/theme/theme.dart';
 import '../routes/router.gr.dart';
@@ -46,17 +46,20 @@ class _SplashScreenState extends State<SplashScreen> {
           (value) => context.router.replace(const GetStartedScreenRoute()),
         ),
         builder: (context, snapshot) {
-          return Scaffold(
-            body: Center(
-              child: Hero(
-                tag: 'logo',
-                child: AnimatedContainer(
-                  height: imageSize,
-                  duration: const Duration(milliseconds: 800),
-                  child: Image.asset(
-                    appTheme == AppTheme.light
-                        ? voxIconLogoBlack
-                        : voxIconLogoWhite,
+          return AppAnnotatedWidget(
+            appTheme: appTheme,
+            child: Scaffold(
+              body: Center(
+                child: Hero(
+                  tag: 'logo',
+                  child: AnimatedContainer(
+                    height: imageSize,
+                    duration: const Duration(milliseconds: 800),
+                    child: Image.asset(
+                      appTheme == AppTheme.light
+                          ? voxIconLogoBlack
+                          : voxIconLogoWhite,
+                    ),
                   ),
                 ),
               ),
