@@ -22,38 +22,41 @@ class HomeTopWidget extends StatelessWidget {
     final dateNow = DateTime.now();
     final date = DateFormat('EEEE d MMMM').format(dateNow);
 
-    return Row(
-      children: [
-        Hero(
-          tag: 'logo',
-          child: Image.asset(
-            appTheme == AppTheme.light ? voxIconLogoBlack : voxIconLogoWhite,
-            height: 50,
-          ),
-        ),
-        const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AutoSizeText(
-              date.toUpperCase(),
-              style: theme?.textTheme.subtitle1,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3.0),
+      child: Row(
+        children: [
+          Hero(
+            tag: 'logo',
+            child: Image.asset(
+              appTheme == AppTheme.light ? voxIconLogoBlack : voxIconLogoWhite,
+              height: 50,
             ),
-            AutoSizeText(
-              "Today",
-              style: theme?.textTheme.headline5,
-            ),
-          ],
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: () {},
-          child: Image.asset(
-            man1,
-            height: heightSize * 0.04,
           ),
-        )
-      ],
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AutoSizeText(
+                date.toUpperCase(),
+                style: theme?.textTheme.subtitle1,
+              ),
+              AutoSizeText(
+                "Today",
+                style: theme?.textTheme.headline5,
+              ),
+            ],
+          ),
+          const Spacer(),
+          GestureDetector(
+            onTap: () {},
+            child: Image.asset(
+              man1,
+              height: heightSize * 0.04,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

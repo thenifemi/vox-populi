@@ -4,12 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
+import '../core/constants/color_constants.dart';
 import 'widgets/app_tab_bar.dart';
 import 'widgets/home_top_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;
@@ -34,7 +41,7 @@ class HomeScreen extends StatelessWidget {
         body: Container(
           height: heightSize,
           width: widthSize,
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               SizedBox(height: heightSize * 0.03),
@@ -59,8 +66,38 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 5.0),
                         child: AutoSizeText(
-                          "Top headlines.",
+                          "Top headlines",
                           style: theme?.textTheme.headline5,
+                        ),
+                      ),
+                      SizedBox(height: heightSize * 0.01),
+                      Expanded(
+                        child: TabBarView(
+                          physics: const BouncingScrollPhysics(),
+                          children: _tempHealineList
+                              .map(
+                                (e) => ListView.builder(
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: 5,
+                                  padding: const EdgeInsets.all(0),
+                                  itemBuilder: (BuildContext context, int i) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Container(
+                                        height: heightSize / 2,
+                                        margin:
+                                            const EdgeInsets.only(bottom: 10),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.greyAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                              .toList(),
                         ),
                       ),
                     ],
