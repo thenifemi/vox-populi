@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                         appTheme: appTheme,
                         categories: _tempHealineList,
                       ),
-                      SizedBox(height: heightSize * 0.01),
+                      SizedBox(height: heightSize * 0.02),
                       AutoSizeText(
                         "Top headlines.",
                         style: theme?.textTheme.headline5,
