@@ -73,7 +73,8 @@ class SigninScreen extends HookWidget {
                                 await Hive.openBox<AppTheme>('appTheme');
                             appThemeBox.put(0, appTheme!);
 
-                            context.router.push(const HomeScreenRoute());
+                            context.router.removeUntil((route) => false);
+                            context.router.replace(const HomeScreenRoute());
                           },
                           validator: (v) {
                             if (v!.isEmpty) {

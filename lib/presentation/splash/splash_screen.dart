@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 
 import '../../Application/theme/theme_bloc.dart';
+import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
 import '../core/constants/image_constants.dart';
 import '../core/theme/theme.dart';
@@ -43,7 +45,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
     return FutureBuilder<dynamic>(
         future: rebuidAfter1Second().then(
-          (value) => context.router.replace(const GetStartedScreenRoute()),
+          (_) async {
+            final userBox = await Hive.openBox<User>('user');
+            if (userBox.isEmpty) {
+              context.router.replace(const GetStartedScreenRoute());
+            } else {
+              context.router.replace(const HomeScreenRoute());
+            }
+          },
         ),
         builder: (context, snapshot) {
           return AppAnnotatedWidget(
