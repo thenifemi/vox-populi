@@ -31,6 +31,11 @@ final appThemeData = {
       unselectedLabelColor: AppColors.greyAccent,
     ),
     textTheme: const TextTheme(
+      subtitle1: TextStyle(
+        fontFamily: 'Ubuntu',
+        fontSize: 16.0,
+        color: AppColors.greyAccent,
+      ),
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
         fontSize: 16.0,
@@ -79,6 +84,11 @@ final appThemeData = {
       unselectedLabelColor: AppColors.greyAccent,
     ),
     textTheme: const TextTheme(
+      subtitle1: TextStyle(
+        fontFamily: 'Ubuntu',
+        fontSize: 16.0,
+        color: AppColors.greyAccent,
+      ),
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
         fontSize: 16.0,

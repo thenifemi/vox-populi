@@ -37,7 +37,7 @@ class HomeTopWidget extends StatelessWidget {
           children: [
             AutoSizeText(
               date.toUpperCase(),
-              style: theme?.textTheme.bodyText1,
+              style: theme?.textTheme.subtitle1,
             ),
             AutoSizeText(
               "Today",
