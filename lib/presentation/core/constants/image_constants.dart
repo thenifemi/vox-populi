@@ -8,6 +8,7 @@ const String voxTextLogoWhite = "assets/logos/vox_text_logo_white.png";
 
 //? Images
 const String getStartedBottomBg = "assets/images/get_started_bottom_bg.png";
+const String testNewsImage = "assets/images/test_news_image.jpg";
 
 //? Avatars
 const String man1 = "assets/avatars/man.png";

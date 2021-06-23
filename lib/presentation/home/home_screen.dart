@@ -1,10 +1,12 @@
+import 'dart:ui';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
-import '../core/constants/color_constants.dart';
+import '../core/constants/image_constants.dart';
 import 'widgets/app_tab_bar.dart';
 import 'widgets/home_top_widget.dart';
 
@@ -83,14 +85,26 @@ class _HomeScreenState extends State<HomeScreen>
                                   itemBuilder: (BuildContext context, int i) {
                                     return Padding(
                                       padding: const EdgeInsets.all(5.0),
-                                      child: Container(
-                                        height: heightSize / 2,
-                                        margin:
-                                            const EdgeInsets.only(bottom: 10),
-                                        decoration: BoxDecoration(
-                                          color: AppColors.greyAccent,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                      child: ClipRect(
+                                        child: BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                            sigmaX: 10.0,
+                                            sigmaY: 10.0,
+                                          ),
+                                          child: Container(
+                                            height: heightSize / 2,
+                                            decoration: BoxDecoration(
+                                              image: const DecorationImage(
+                                                  image: AssetImage(
+                                                    testNewsImage,
+                                                  ),
+                                                  fit: BoxFit.cover),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                10,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     );
