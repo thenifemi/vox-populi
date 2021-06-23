@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vox_populi/presentation/core/constants/color_constants.dart';
+import 'package:vox_populi/presentation/home/widgets/tab_bar_view_item.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
@@ -75,44 +77,19 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(height: heightSize * 0.01),
                       Expanded(
                         child: TabBarView(
-                          physics: const BouncingScrollPhysics(),
-                          children: _tempHealineList
-                              .map(
-                                (e) => ListView.builder(
-                                  physics: const BouncingScrollPhysics(),
-                                  itemCount: 5,
-                                  padding: const EdgeInsets.all(0),
-                                  itemBuilder: (BuildContext context, int i) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: ClipRect(
-                                        child: BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                            sigmaX: 10.0,
-                                            sigmaY: 10.0,
-                                          ),
-                                          child: Container(
-                                            height: heightSize / 2,
-                                            decoration: BoxDecoration(
-                                              image: const DecorationImage(
-                                                  image: AssetImage(
-                                                    testNewsImage,
-                                                  ),
-                                                  fit: BoxFit.cover),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                10,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              )
-                              .toList(),
-                        ),
+                            physics: const BouncingScrollPhysics(),
+                            children: _tempHealineList
+                                .map((e) => ListView.builder(
+                                      physics: const BouncingScrollPhysics(),
+                                      itemCount: 5,
+                                      padding: const EdgeInsets.all(0),
+                                      itemBuilder: (context, i) {
+                                        return TabBarViewItem(
+                                          heightSize: heightSize,
+                                        );
+                                      },
+                                    ))
+                                .toList()),
                       ),
                     ],
                   ),
