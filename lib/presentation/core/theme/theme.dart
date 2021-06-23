@@ -40,6 +40,11 @@ final appThemeData = {
         fontSize: 16.0,
         color: AppColors.greyAccent,
       ),
+      subtitle2: TextStyle(
+        fontFamily: 'Ubuntu',
+        fontSize: 16.0,
+        color: AppColors.eggshell,
+      ),
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
         fontSize: 16.0,
@@ -54,8 +59,8 @@ final appThemeData = {
       headline6: TextStyle(
         fontFamily: 'Ubuntu',
         fontWeight: FontWeight.w600,
-        fontSize: 20.0,
-        color: AppColors.grey,
+        fontSize: 25.0,
+        color: AppColors.eggshell,
       ),
       headline5: TextStyle(
         fontFamily: 'Ubuntu',
@@ -97,6 +102,11 @@ final appThemeData = {
         fontSize: 16.0,
         color: AppColors.greyAccent,
       ),
+      subtitle2: TextStyle(
+        fontFamily: 'Ubuntu',
+        fontSize: 16.0,
+        color: AppColors.greyAccent,
+      ),
       bodyText1: TextStyle(
         fontFamily: 'Ubuntu',
         fontSize: 16.0,
@@ -111,8 +121,8 @@ final appThemeData = {
       headline6: TextStyle(
         fontFamily: 'Ubuntu',
         fontWeight: FontWeight.w600,
-        fontSize: 20.0,
-        color: AppColors.eggshell,
+        fontSize: 25.0,
+        color: AppColors.grey,
       ),
       headline5: TextStyle(
         fontFamily: 'Ubuntu',
