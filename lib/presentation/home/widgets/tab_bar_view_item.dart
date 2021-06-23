@@ -35,7 +35,6 @@ class TabBarViewItem extends StatelessWidget {
             ),
           ),
           Container(
-            height: heightSize / 5,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: AppColors.grey.withOpacity(0.8),
