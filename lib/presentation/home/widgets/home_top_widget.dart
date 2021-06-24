@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
+import '../../routes/router.gr.dart';
 
 class HomeTopWidget extends StatelessWidget {
   const HomeTopWidget({
@@ -49,10 +51,15 @@ class HomeTopWidget extends StatelessWidget {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () {},
-            child: Image.asset(
-              man1,
-              height: heightSize * 0.04,
+            onTap: () {
+              context.router.push(const SettingsScreenRoute());
+            },
+            child: Hero(
+              tag: 'avatar',
+              child: Image.asset(
+                man1,
+                height: heightSize * 0.04,
+              ),
             ),
           )
         ],
