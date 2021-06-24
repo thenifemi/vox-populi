@@ -7,6 +7,7 @@ import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
 import 'widgets/dark_mode_widget.dart';
 import 'widgets/edit_profile_widget.dart';
+import 'widgets/saved_articles_widget.dart';
 import 'widgets/settings_top_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -33,7 +34,10 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: heightSize * 0.03),
-              SettingsTopWidget(theme: theme),
+              SettingsTopWidget(
+                theme: theme,
+                appTheme: appTheme,
+              ),
               SizedBox(height: heightSize * 0.03),
               EditProfileWidget(
                 heightSize: heightSize,
@@ -43,6 +47,11 @@ class SettingsScreen extends StatelessWidget {
               ),
               SizedBox(height: heightSize * 0.03),
               DarkModeWidget(theme: theme),
+              SizedBox(height: heightSize * 0.03),
+              SavedArticlesWidget(
+                appTheme: appTheme,
+                theme: theme,
+              ),
             ],
           ),
         ),
