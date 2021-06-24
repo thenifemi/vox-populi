@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
@@ -6,8 +5,7 @@ import 'package:hive/hive.dart';
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
-import '../core/components/app_button.dart';
-import '../core/constants/image_constants.dart';
+import 'widgets/edit_profile_widget.dart';
 import 'widgets/settings_top_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -36,30 +34,11 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: heightSize * 0.03),
               SettingsTopWidget(theme: theme),
               SizedBox(height: heightSize * 0.03),
-              Row(
-                children: [
-                  Hero(
-                    tag: 'avatar',
-                    child: Image.asset(
-                      man1,
-                      height: heightSize * 0.1,
-                    ),
-                  ),
-                  SizedBox(width: widthSize * 0.03),
-                  AutoSizeText(
-                    userBox.get(0)!.name!,
-                    style: theme?.textTheme.headline5,
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    height: heightSize * 0.03,
-                    child: AppButton(
-                      name: 'Edit',
-                      onPressed: () {},
-                      widthSize: null,
-                    ),
-                  ),
-                ],
+              EditProfileWidget(
+                heightSize: heightSize,
+                widthSize: widthSize,
+                userBox: userBox,
+                theme: theme,
               ),
             ],
           ),
