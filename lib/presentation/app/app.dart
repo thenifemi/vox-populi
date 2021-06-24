@@ -26,7 +26,6 @@ class App extends StatelessWidget {
           ThemeEvent.changeTheme(appTheme!),
         ),
       child: BlocBuilder<ThemeBloc, ThemeState>(
-        buildWhen: (p, c) => p != c,
         builder: (context, state) {
           return MaterialApp.router(
             title: 'Vox Populi',
