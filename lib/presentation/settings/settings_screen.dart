@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
+import '../core/components/app_button.dart';
 import 'widgets/dark_mode_widget.dart';
 import 'widgets/edit_profile_widget.dart';
 import 'widgets/saved_articles_widget.dart';
@@ -52,6 +53,18 @@ class SettingsScreen extends StatelessWidget {
                 appTheme: appTheme,
                 theme: theme,
               ),
+              const Spacer(),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: SizedBox(
+                  height: 40,
+                  child: AppButton(
+                    name: 'Sign out',
+                    onPressed: () {},
+                    widthSize: null,
+                  ),
+                ),
+              )
             ],
           ),
         ),

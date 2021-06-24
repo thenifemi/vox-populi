@@ -34,6 +34,7 @@ class EditProfileWidget extends StatelessWidget {
         SizedBox(width: widthSize * 0.03),
         AutoSizeText(
           userBox.get(0)!.name!,
+          maxLines: 1,
           style: theme?.textTheme.headline5,
         ),
         const Spacer(),
