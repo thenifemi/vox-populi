@@ -1,16 +1,12 @@
-import 'dart:ui';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/presentation/core/constants/color_constants.dart';
-import 'package:vox_populi/presentation/home/widgets/tab_bar_view_item.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
-import '../core/constants/image_constants.dart';
 import 'widgets/app_tab_bar.dart';
 import 'widgets/home_top_widget.dart';
+import 'widgets/tab_bar_view_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
