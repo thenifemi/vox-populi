@@ -8,6 +8,7 @@ import '../core/components/app_annotated_widget.dart';
 import '../core/components/app_button.dart';
 import 'widgets/dark_mode_widget.dart';
 import 'widgets/edit_profile_widget.dart';
+import 'widgets/github_info_widget.dart';
 import 'widgets/saved_articles_widget.dart';
 import 'widgets/settings_top_widget.dart';
 
@@ -54,6 +55,11 @@ class SettingsScreen extends StatelessWidget {
                 theme: theme,
               ),
               const Spacer(),
+              GithubInfoWidget(
+                theme: theme,
+                heightSize: heightSize,
+              ),
+              SizedBox(height: heightSize * 0.03),
               Align(
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
