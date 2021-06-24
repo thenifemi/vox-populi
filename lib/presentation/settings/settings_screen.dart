@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
+import 'widgets/dark_mode_widget.dart';
 import 'widgets/edit_profile_widget.dart';
 import 'widgets/settings_top_widget.dart';
 
@@ -40,6 +41,8 @@ class SettingsScreen extends StatelessWidget {
                 userBox: userBox,
                 theme: theme,
               ),
+              SizedBox(height: heightSize * 0.03),
+              DarkModeWidget(theme: theme),
             ],
           ),
         ),
