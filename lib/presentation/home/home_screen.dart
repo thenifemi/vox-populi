@@ -8,15 +8,7 @@ import 'widgets/app_tab_bar.dart';
 import 'widgets/home_top_widget.dart';
 import 'widgets/tab_bar_view_item.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;

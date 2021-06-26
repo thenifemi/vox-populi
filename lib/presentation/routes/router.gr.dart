@@ -39,7 +39,7 @@ class AppRouter extends _i1.RootStackRouter {
     HomeScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i6.HomeScreen();
+          return _i6.HomeScreen();
         }),
     SettingsScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
