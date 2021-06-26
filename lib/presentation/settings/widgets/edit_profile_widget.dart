@@ -17,12 +17,12 @@ class EditProfileWidget extends StatelessWidget {
 
   final double heightSize;
   final double widthSize;
-  final Box<User?>? userBox;
+  final Box<User?> userBox;
   final ThemeData? theme;
 
   @override
   Widget build(BuildContext context) {
-    final name = userBox?.get(0)!.name ?? '';
+    final name = userBox.get(0)!.name ?? '';
 
     return Row(
       children: [

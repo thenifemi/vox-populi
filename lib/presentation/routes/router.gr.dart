@@ -21,11 +21,8 @@ class AppRouter extends _i1.RootStackRouter {
   final Map<String, _i1.PageFactory> pagesMap = {
     SplashScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<SplashScreenRouteArgs>(
-              orElse: () => const SplashScreenRouteArgs());
-          return _i3.SplashScreen(
-              key: args.key, fromSignoutButton: args.fromSignoutButton);
+        builder: (_) {
+          return const _i3.SplashScreen();
         }),
     GetStartedScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -62,22 +59,10 @@ class AppRouter extends _i1.RootStackRouter {
       ];
 }
 
-class SplashScreenRoute extends _i1.PageRouteInfo<SplashScreenRouteArgs> {
-  SplashScreenRoute({_i2.Key? key, bool? fromSignoutButton})
-      : super(name,
-            path: '/',
-            args: SplashScreenRouteArgs(
-                key: key, fromSignoutButton: fromSignoutButton));
+class SplashScreenRoute extends _i1.PageRouteInfo {
+  const SplashScreenRoute() : super(name, path: '/');
 
   static const String name = 'SplashScreenRoute';
-}
-
-class SplashScreenRouteArgs {
-  const SplashScreenRouteArgs({this.key, this.fromSignoutButton});
-
-  final _i2.Key? key;
-
-  final bool? fromSignoutButton;
 }
 
 class GetStartedScreenRoute extends _i1.PageRouteInfo {
