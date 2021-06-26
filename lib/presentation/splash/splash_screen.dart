@@ -13,7 +13,12 @@ import '../core/theme/theme.dart';
 import '../routes/router.gr.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({
+    Key? key,
+    this.fromSignoutButton,
+  }) : super(key: key);
+
+  final bool? fromSignoutButton;
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -24,6 +29,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
+    if (widget.fromSignoutButton ?? false) {
+      final userBox = Hive.box<User>('user');
+      userBox.delete(0);
+    }
     imageSize = 400;
     super.initState();
   }

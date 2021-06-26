@@ -67,11 +67,10 @@ class SettingsScreen extends StatelessWidget {
                   child: AppButton(
                     name: 'Sign out',
                     onPressed: () async {
-                      final userBox = await Hive.openBox<User>('user');
-                      userBox.clear();
-
                       context.router.removeUntil((route) => false);
-                      context.router.replace(const SplashScreenRoute());
+                      context.router.replace(
+                        SplashScreenRoute(fromSignoutButton: true),
+                      );
                     },
                     widthSize: null,
                   ),
