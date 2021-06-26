@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
@@ -6,6 +7,7 @@ import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
 import '../core/components/app_button.dart';
+import '../routes/router.gr.dart';
 import 'widgets/dark_mode_widget.dart';
 import 'widgets/edit_profile_widget.dart';
 import 'widgets/github_info_widget.dart';
@@ -66,7 +68,12 @@ class SettingsScreen extends StatelessWidget {
                   height: 40,
                   child: AppButton(
                     name: 'Sign out',
-                    onPressed: () {},
+                    onPressed: () async {
+                      final userBox = await Hive.openBox<User>('user');
+                      userBox.clear();
+                      context.router.removeUntil((route) => false);
+                      context.router.replace(const SplashScreenRoute());
+                    },
                     widthSize: null,
                   ),
                 ),
