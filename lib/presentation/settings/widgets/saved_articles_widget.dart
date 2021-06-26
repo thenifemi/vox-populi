@@ -43,6 +43,7 @@ class SavedArticlesWidget extends StatelessWidget {
                   ? AppColors.greyAccent
                   : AppColors.eggshell,
             ),
+            const SizedBox(width: 5),
             AutoSizeText(
               "Saved articles",
               style: theme?.textTheme.bodyText2,
