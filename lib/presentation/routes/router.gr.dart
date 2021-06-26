@@ -44,7 +44,7 @@ class AppRouter extends _i1.RootStackRouter {
     SettingsScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i7.SettingsScreen();
+          return _i7.SettingsScreen();
         })
   };
 

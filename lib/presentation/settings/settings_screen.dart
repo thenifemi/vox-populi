@@ -15,8 +15,6 @@ import 'widgets/saved_articles_widget.dart';
 import 'widgets/settings_top_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;
@@ -71,6 +69,7 @@ class SettingsScreen extends StatelessWidget {
                     onPressed: () async {
                       final userBox = await Hive.openBox<User>('user');
                       userBox.clear();
+
                       context.router.removeUntil((route) => false);
                       context.router.replace(const SplashScreenRoute());
                     },
