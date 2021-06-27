@@ -67,16 +67,13 @@ class SettingsScreen extends StatelessWidget {
                   child: AppButton(
                     name: 'Sign out',
                     onPressed: () async {
-                      // userBox.deleteFromDisk();
                       // context.router.removeUntil((route) => false);
-                      // context.router.replace(
-                      //   const SplashScreenRoute(),
-                      // );
+                      context.router.push(SigninScreenRoute());
                     },
                     widthSize: null,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

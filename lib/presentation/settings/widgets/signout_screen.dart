@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:vox_populi/presentation/core/components/app_button.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
 import '../../../Domain/user/user.dart';
 import '../../core/components/app_annotated_widget.dart';
+import '../../core/components/app_button.dart';
+import '../../routes/router.gr.dart';
 
 class SignoutScreen extends StatelessWidget {
   @override
@@ -47,11 +49,11 @@ class SignoutScreen extends StatelessWidget {
                   child: AppButton(
                     name: 'Yes, Sign out.',
                     onPressed: () async {
-                      // userBox.deleteFromDisk();
-                      // context.router.removeUntil((route) => false);
-                      // context.router.replace(
-                      //   const SplashScreenRoute(),
-                      // );
+                      userBox.deleteFromDisk();
+                      context.router.removeUntil((route) => false);
+                      context.router.replace(
+                        const SplashScreenRoute(),
+                      );
                     },
                     widthSize: null,
                   ),
