@@ -13,13 +13,6 @@ import '../../core/theme/theme.dart';
 import '../../routes/router.gr.dart';
 
 class SignoutScreen extends StatelessWidget {
-  const SignoutScreen({
-    Key? key,
-    required this.userBox,
-  }) : super(key: key);
-
-  final Box<User>? userBox;
-
   @override
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;
@@ -75,7 +68,9 @@ class SignoutScreen extends StatelessWidget {
                         child: AppButton(
                           name: 'Yes, Sign out.',
                           onPressed: () async {
-                            userBox?.deleteFromDisk();
+                            final userBox = await Hive.openBox<User>('user');
+                            userBox.deleteFromDisk();
+
                             context.router.removeUntil((route) => false);
                             context.router.replace(
                               const SplashScreenRoute(),

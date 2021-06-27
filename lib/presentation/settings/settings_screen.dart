@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 
 import '../../Application/theme/theme_bloc.dart';
-import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
 import '../core/components/app_button.dart';
 import '../routes/router.gr.dart';
@@ -22,8 +20,6 @@ class SettingsScreen extends StatelessWidget {
 
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
-
-    final userBox = Hive.box<User>('user');
 
     return AppAnnotatedWidget(
       appTheme: appTheme,
@@ -44,7 +40,6 @@ class SettingsScreen extends StatelessWidget {
               EditProfileWidget(
                 heightSize: heightSize,
                 widthSize: widthSize,
-                userBox: userBox,
                 theme: theme,
               ),
               SizedBox(height: heightSize * 0.03),
@@ -68,7 +63,7 @@ class SettingsScreen extends StatelessWidget {
                     name: 'Sign out',
                     onPressed: () async {
                       context.router.push(
-                        SignoutScreenRoute(userBox: userBox),
+                        const SignoutScreenRoute(),
                       );
                     },
                     widthSize: null,
