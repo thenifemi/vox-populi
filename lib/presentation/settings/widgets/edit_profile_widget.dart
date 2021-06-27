@@ -38,7 +38,7 @@ class EditProfileWidget extends StatelessWidget {
             size: 30,
           );
         } else if (snapshot.connectionState == ConnectionState.done) {
-          final name = snapshot.data?.get(0)!.name ?? '';
+          final name = snapshot.data?.get(0)?.name ?? '';
 
           return Row(
             children: [
