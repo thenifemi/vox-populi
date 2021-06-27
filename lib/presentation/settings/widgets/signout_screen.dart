@@ -8,6 +8,8 @@ import '../../../Application/theme/theme_bloc.dart';
 import '../../../Domain/user/user.dart';
 import '../../core/components/app_annotated_widget.dart';
 import '../../core/components/app_button.dart';
+import '../../core/constants/color_constants.dart';
+import '../../core/theme/theme.dart';
 import '../../routes/router.gr.dart';
 
 class SignoutScreen extends StatelessWidget {
@@ -29,34 +31,56 @@ class SignoutScreen extends StatelessWidget {
           width: widthSize,
           padding: const EdgeInsets.all(30.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AutoSizeText(
-                "Are you sure you want to sign out?",
-                style: theme?.textTheme.headline5,
-              ),
-              SizedBox(height: heightSize * 0.01),
-              AutoSizeText(
-                "By signing out, you delete your personal data and your saved articles from this device.",
-                style: theme?.textTheme.bodyText1,
-              ),
-              SizedBox(height: heightSize * 0.02),
+              SizedBox(height: heightSize * 0.03),
               Align(
-                alignment: Alignment.bottomRight,
-                child: SizedBox(
-                  height: 40,
-                  child: AppButton(
-                    name: 'Yes, Sign out.',
-                    onPressed: () async {
-                      userBox.deleteFromDisk();
-                      context.router.removeUntil((route) => false);
-                      context.router.replace(
-                        const SplashScreenRoute(),
-                      );
-                    },
-                    widthSize: null,
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  onPressed: () {
+                    context.router.pop();
+                  },
+                  icon: Icon(
+                    Icons.cancel_rounded,
+                    size: 30,
+                    color: appTheme == AppTheme.light
+                        ? AppColors.greyAccent
+                        : AppColors.eggshell.withOpacity(0.3),
                   ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AutoSizeText(
+                      "Are you sure you want to sign out?",
+                      style: theme?.textTheme.headline5,
+                    ),
+                    SizedBox(height: heightSize * 0.02),
+                    AutoSizeText(
+                      "By signing out, you delete your personal data and your saved articles from this device.",
+                      style: theme?.textTheme.bodyText1,
+                    ),
+                    SizedBox(height: heightSize * 0.03),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: SizedBox(
+                        height: 40,
+                        child: AppButton(
+                          name: 'Yes, Sign out.',
+                          onPressed: () async {
+                            userBox.deleteFromDisk();
+                            context.router.removeUntil((route) => false);
+                            context.router.replace(
+                              const SplashScreenRoute(),
+                            );
+                          },
+                          widthSize: null,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
