@@ -6,7 +6,9 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
+import 'package:hive/hive.dart' as _i9;
 
+import '../../Domain/user/user.dart' as _i10;
 import '../get_started/get_started_screen.dart' as _i4;
 import '../home/home_screen.dart' as _i6;
 import '../settings/settings_screen.dart' as _i7;
@@ -49,8 +51,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     SignoutScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i8.SignoutScreen();
+        builder: (data) {
+          final args = data.argsAs<SignoutScreenRouteArgs>();
+          return _i8.SignoutScreen(key: args.key, userBox: args.userBox);
         })
   };
 
@@ -104,8 +107,19 @@ class SettingsScreenRoute extends _i1.PageRouteInfo {
   static const String name = 'SettingsScreenRoute';
 }
 
-class SignoutScreenRoute extends _i1.PageRouteInfo {
-  const SignoutScreenRoute() : super(name, path: '/signout-screen');
+class SignoutScreenRoute extends _i1.PageRouteInfo<SignoutScreenRouteArgs> {
+  SignoutScreenRoute({_i2.Key? key, required _i9.Box<_i10.User>? userBox})
+      : super(name,
+            path: '/signout-screen',
+            args: SignoutScreenRouteArgs(key: key, userBox: userBox));
 
   static const String name = 'SignoutScreenRoute';
+}
+
+class SignoutScreenRouteArgs {
+  const SignoutScreenRouteArgs({this.key, required this.userBox});
+
+  final _i2.Key? key;
+
+  final _i9.Box<_i10.User>? userBox;
 }

@@ -13,6 +13,13 @@ import '../../core/theme/theme.dart';
 import '../../routes/router.gr.dart';
 
 class SignoutScreen extends StatelessWidget {
+  const SignoutScreen({
+    Key? key,
+    required this.userBox,
+  }) : super(key: key);
+
+  final Box<User>? userBox;
+
   @override
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;
@@ -20,8 +27,6 @@ class SignoutScreen extends StatelessWidget {
 
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
-
-    final userBox = Hive.box<User>('user');
 
     return AppAnnotatedWidget(
       appTheme: appTheme,
@@ -70,7 +75,7 @@ class SignoutScreen extends StatelessWidget {
                         child: AppButton(
                           name: 'Yes, Sign out.',
                           onPressed: () async {
-                            userBox.deleteFromDisk();
+                            userBox?.deleteFromDisk();
                             context.router.removeUntil((route) => false);
                             context.router.replace(
                               const SplashScreenRoute(),
