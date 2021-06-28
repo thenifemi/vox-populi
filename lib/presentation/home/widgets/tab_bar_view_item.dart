@@ -17,7 +17,6 @@ class TabBarViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
-    final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
     return Padding(
       padding: const EdgeInsets.all(5.0),
