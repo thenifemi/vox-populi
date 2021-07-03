@@ -22,8 +22,7 @@ Future<void> main() async {
 
   if (appThemeBox.isEmpty) {
     appThemeBox.put(0, AppTheme.light);
-    runApp(App(appTheme: appThemeBox.get(0)));
-  } else {
-    runApp(App(appTheme: appThemeBox.get(0)));
   }
+
+  runApp(App(appTheme: appThemeBox.get(0)));
 }
