@@ -21,7 +21,7 @@ class EditProfileTopWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AutoSizeText(
-          "Edit Profile",
+          "Edit profile",
           style: theme?.textTheme.headline4,
         ),
         const Spacer(),
