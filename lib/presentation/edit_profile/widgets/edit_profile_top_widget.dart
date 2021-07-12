@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../core/constants/color_constants.dart';
 import '../../core/theme/theme.dart';
 
-class SettingsTopWidget extends StatelessWidget {
-  const SettingsTopWidget({
+class EditProfileTopWidget extends StatelessWidget {
+  const EditProfileTopWidget({
     Key? key,
     required this.theme,
     required this.appTheme,
@@ -21,7 +21,7 @@ class SettingsTopWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AutoSizeText(
-          "Settings",
+          "Edit Profile",
           style: theme?.textTheme.headline4,
         ),
         const Spacer(),

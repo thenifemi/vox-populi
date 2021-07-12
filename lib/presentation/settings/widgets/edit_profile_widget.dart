@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Domain/user/user.dart';
 import '../../core/components/app_button.dart';
 import '../../core/constants/image_constants.dart';
+import '../../routes/router.gr.dart';
 
 class EditProfileWidget extends StatelessWidget {
   const EditProfileWidget({
@@ -41,7 +43,11 @@ class EditProfileWidget extends StatelessWidget {
           height: heightSize * 0.03,
           child: AppButton(
             name: 'Edit',
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(
+                EditProfileScreenRoute(profile: profile),
+              );
+            },
             widthSize: null,
           ),
         ),
