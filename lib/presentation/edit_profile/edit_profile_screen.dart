@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,7 @@ import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
 import '../core/components/app_button.dart';
 import '../core/constants/image_constants.dart';
+import '../routes/router.gr.dart';
 import 'widgets/choose_avatar_dialog_widget.dart';
 import 'widgets/edit_profile_textfield_widget.dart';
 import 'widgets/edit_profile_top_widget.dart';
@@ -66,8 +68,14 @@ class EditProfileScreen extends HookWidget {
                       child: AppButton(
                         name: 'Edit',
                         onPressed: () async {
-                          await showChooseAvatarDialog(context)
-                              .then((value) => avatar.value = value);
+                          await showChooseAvatarDialog(context).then(
+                            (value) {
+                              if (value == '') {
+                              } else {
+                                avatar.value = value;
+                              }
+                            },
+                          );
                         },
                         widthSize: null,
                       ),
@@ -96,6 +104,7 @@ class EditProfileScreen extends HookWidget {
 
                     if (form!.validate()) {
                       form.save();
+                      context.router.replace(const HomeScreenRoute());
                     }
                   },
                   widthSize: widthSize,

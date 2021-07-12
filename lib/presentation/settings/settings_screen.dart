@@ -32,6 +32,7 @@ class SettingsScreen extends StatelessWidget {
     return AppAnnotatedWidget(
       appTheme: appTheme,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           height: heightSize,
           width: widthSize,

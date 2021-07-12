@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../../Domain/user/user.dart';
 import '../../core/components/app_button.dart';
-import '../../core/constants/image_constants.dart';
 import '../../routes/router.gr.dart';
 
 class EditProfileWidget extends StatelessWidget {
