@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vox_populi/presentation/edit_profile/widgets/choose_avatar_dialog_widget.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
@@ -60,7 +61,7 @@ class EditProfileScreen extends StatelessWidget {
                       height: heightSize * 0.03,
                       child: AppButton(
                         name: 'Edit',
-                        onPressed: () {},
+                        onPressed: () => showChooseAvatarDialog(context),
                         widthSize: null,
                       ),
                     ),
