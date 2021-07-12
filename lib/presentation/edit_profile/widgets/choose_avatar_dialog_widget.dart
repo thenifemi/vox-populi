@@ -8,7 +8,7 @@ import '../../core/constants/color_constants.dart';
 import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
 
-void showChooseAvatarDialog(BuildContext context) {
+Future<String> showChooseAvatarDialog(BuildContext context) async {
   final heightSize = MediaQuery.of(context).size.height;
   final widthSize = MediaQuery.of(context).size.width;
 
@@ -24,7 +24,7 @@ void showChooseAvatarDialog(BuildContext context) {
     woman3,
   ];
 
-  showDialog(
+  return await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
@@ -70,9 +70,17 @@ void showChooseAvatarDialog(BuildContext context) {
                   ),
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return Image.asset(
-                      avatarList[index],
-                      height: heightSize * 0.1,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context, avatarList[index]);
+                      },
+                      child: Hero(
+                        tag: 'hero',
+                        child: Image.asset(
+                          avatarList[index],
+                          height: heightSize * 0.1,
+                        ),
+                      ),
                     );
                   },
                 ),
