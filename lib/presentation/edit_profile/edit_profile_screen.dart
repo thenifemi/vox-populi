@@ -104,6 +104,7 @@ class EditProfileScreen extends HookWidget {
 
                     if (form!.validate()) {
                       form.save();
+                      context.router.removeUntil((route) => false);
                       context.router.replace(const HomeScreenRoute());
                     }
                   },
