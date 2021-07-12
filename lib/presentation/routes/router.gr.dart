@@ -7,7 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../Domain/user/user.dart' as _i9;
+import '../../Domain/user/user.dart' as _i10;
+import '../edit_profile/edit_profile_screen.dart' as _i9;
 import '../get_started/get_started_screen.dart' as _i4;
 import '../home/home_screen.dart' as _i6;
 import '../settings/settings_screen.dart' as _i7;
@@ -53,6 +54,12 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return _i8.SignoutScreen();
+        }),
+    EditProfileScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EditProfileScreenRouteArgs>();
+          return _i9.EditProfileScreen(key: args.key, profile: args.profile);
         })
   };
 
@@ -64,7 +71,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SigninScreenRoute.name, path: '/signin-screen'),
         _i1.RouteConfig(HomeScreenRoute.name, path: '/home-screen'),
         _i1.RouteConfig(SettingsScreenRoute.name, path: '/settings-screen'),
-        _i1.RouteConfig(SignoutScreenRoute.name, path: '/signout-screen')
+        _i1.RouteConfig(SignoutScreenRoute.name, path: '/signout-screen'),
+        _i1.RouteConfig(EditProfileScreenRoute.name,
+            path: '/edit-profile-screen')
       ];
 }
 
@@ -101,7 +110,7 @@ class HomeScreenRoute extends _i1.PageRouteInfo {
 }
 
 class SettingsScreenRoute extends _i1.PageRouteInfo<SettingsScreenRouteArgs> {
-  SettingsScreenRoute({_i2.Key? key, required _i9.User profile})
+  SettingsScreenRoute({_i2.Key? key, required _i10.User profile})
       : super(name,
             path: '/settings-screen',
             args: SettingsScreenRouteArgs(key: key, profile: profile));
@@ -114,11 +123,29 @@ class SettingsScreenRouteArgs {
 
   final _i2.Key? key;
 
-  final _i9.User profile;
+  final _i10.User profile;
 }
 
 class SignoutScreenRoute extends _i1.PageRouteInfo {
   const SignoutScreenRoute() : super(name, path: '/signout-screen');
 
   static const String name = 'SignoutScreenRoute';
+}
+
+class EditProfileScreenRoute
+    extends _i1.PageRouteInfo<EditProfileScreenRouteArgs> {
+  EditProfileScreenRoute({_i2.Key? key, required _i10.User profile})
+      : super(name,
+            path: '/edit-profile-screen',
+            args: EditProfileScreenRouteArgs(key: key, profile: profile));
+
+  static const String name = 'EditProfileScreenRoute';
+}
+
+class EditProfileScreenRouteArgs {
+  const EditProfileScreenRouteArgs({this.key, required this.profile});
+
+  final _i2.Key? key;
+
+  final _i10.User profile;
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/Application/theme/theme_bloc.dart';
-import 'package:vox_populi/Domain/user/user.dart';
-import 'package:vox_populi/presentation/core/components/app_annotated_widget.dart';
+
+import '../../Application/theme/theme_bloc.dart';
+import '../../Domain/user/user.dart';
+import '../core/components/app_annotated_widget.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({
