@@ -28,7 +28,7 @@ class EditProfileWidget extends StatelessWidget {
         Hero(
           tag: 'avatar',
           child: Image.asset(
-            man1,
+            profile.avatar!,
             height: heightSize * 0.1,
           ),
         ),

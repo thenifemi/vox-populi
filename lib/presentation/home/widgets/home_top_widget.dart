@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:vox_populi/Domain/user/user.dart';
 
+import '../../../Domain/user/user.dart';
+import '../../core/constants/color_constants.dart';
 import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
 import '../../routes/router.gr.dart';
@@ -63,10 +65,23 @@ class HomeTopWidget extends StatelessWidget {
             },
             child: Hero(
               tag: 'avatar',
-              child: Image.asset(
-                man1,
-                height: heightSize * 0.04,
-              ),
+              child: FutureBuilder<Box<User>>(
+                  future: Hive.openBox<User>('user'),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return SpinKitPulse(
+                        size: 20,
+                        color: appTheme == AppTheme.light
+                            ? AppColors.grey
+                            : AppColors.eggshell,
+                      );
+                    } else {
+                      return Image.asset(
+                        snapshot.data!.get(0)!.avatar!,
+                        height: heightSize * 0.04,
+                      );
+                    }
+                  }),
             ),
           )
         ],

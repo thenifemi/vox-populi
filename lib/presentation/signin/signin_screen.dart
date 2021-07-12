@@ -10,6 +10,7 @@ import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
 import '../core/components/app_annotated_widget.dart';
 import '../core/components/app_button.dart';
+import '../core/constants/image_constants.dart';
 import '../core/theme/theme.dart';
 import '../routes/router.gr.dart';
 import 'widgets/signin_textfield_widget.dart';
@@ -67,7 +68,7 @@ class SigninScreen extends HookWidget {
                         SigninTextfieldWidget(
                           onSaved: (v) async {
                             final userBox = await Hive.openBox<User>('user');
-                            userBox.put(0, User(name: v));
+                            userBox.put(0, User(name: v, avatar: man1));
 
                             final appThemeBox =
                                 await Hive.openBox<AppTheme>('appTheme');

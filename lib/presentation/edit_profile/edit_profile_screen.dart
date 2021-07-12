@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hive/hive.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/user/user.dart';
@@ -76,8 +77,16 @@ class EditProfileScreen extends HookWidget {
                 SizedBox(height: heightSize * 0.03),
                 EditProfileTextfieldWidget(
                   initialValue: profile.name,
-                  onSaved: (v) {},
-                  validator: (v) {},
+                  onSaved: (v) async {
+                    final userBox = await Hive.openBox<User>('user');
+                    userBox.put(0, User(name: v, avatar: avatar.value));
+                  },
+                  validator: (v) {
+                    if (v!.isEmpty) {
+                      return 'Sorry, cannot be empty.';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: heightSize * 0.02),
                 AppButton(
