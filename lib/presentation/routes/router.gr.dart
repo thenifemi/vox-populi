@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../Domain/user/user.dart' as _i9;
 import '../get_started/get_started_screen.dart' as _i4;
 import '../home/home_screen.dart' as _i6;
 import '../settings/settings_screen.dart' as _i7;
@@ -44,8 +45,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     SettingsScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i7.SettingsScreen();
+        builder: (data) {
+          final args = data.argsAs<SettingsScreenRouteArgs>();
+          return _i7.SettingsScreen(key: args.key, profile: args.profile);
         }),
     SignoutScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -98,10 +100,21 @@ class HomeScreenRoute extends _i1.PageRouteInfo {
   static const String name = 'HomeScreenRoute';
 }
 
-class SettingsScreenRoute extends _i1.PageRouteInfo {
-  const SettingsScreenRoute() : super(name, path: '/settings-screen');
+class SettingsScreenRoute extends _i1.PageRouteInfo<SettingsScreenRouteArgs> {
+  SettingsScreenRoute({_i2.Key? key, required _i9.User profile})
+      : super(name,
+            path: '/settings-screen',
+            args: SettingsScreenRouteArgs(key: key, profile: profile));
 
   static const String name = 'SettingsScreenRoute';
+}
+
+class SettingsScreenRouteArgs {
+  const SettingsScreenRouteArgs({this.key, required this.profile});
+
+  final _i2.Key? key;
+
+  final _i9.User profile;
 }
 
 class SignoutScreenRoute extends _i1.PageRouteInfo {

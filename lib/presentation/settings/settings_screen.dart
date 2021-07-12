@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vox_populi/Domain/user/user.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
@@ -13,6 +14,13 @@ import 'widgets/saved_articles_widget.dart';
 import 'widgets/settings_top_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({
+    Key? key,
+    required this.profile,
+  }) : super(key: key);
+
+  final User profile;
+
   @override
   Widget build(BuildContext context) {
     final heightSize = MediaQuery.of(context).size.height;
@@ -41,6 +49,7 @@ class SettingsScreen extends StatelessWidget {
                 heightSize: heightSize,
                 widthSize: widthSize,
                 theme: theme,
+                profile: profile,
               ),
               SizedBox(height: heightSize * 0.03),
               DarkModeWidget(theme: theme),

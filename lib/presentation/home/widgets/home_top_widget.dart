@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:vox_populi/Domain/user/user.dart';
 
 import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
@@ -51,8 +53,13 @@ class HomeTopWidget extends StatelessWidget {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () {
-              context.router.push(const SettingsScreenRoute());
+            onTap: () async {
+              final profileBox = await Hive.openBox<User>('user');
+              final profile = profileBox.get(0);
+
+              context.router.push(SettingsScreenRoute(
+                profile: profile!,
+              ));
             },
             child: Hero(
               tag: 'avatar',
