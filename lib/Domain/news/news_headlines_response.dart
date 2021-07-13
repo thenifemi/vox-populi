@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-NewsHeadlinsResponse newsHeadlinsResponseFromJson(String str) =>
-    NewsHeadlinsResponse.fromJson(json.decode(str));
+NewsHeadlinesResponse newsHeadlinsResponseFromJson(String str) =>
+    NewsHeadlinesResponse.fromJson(json.decode(str));
 
-String newsHeadlinsResponseToJson(NewsHeadlinsResponse data) =>
+String newsHeadlinsResponseToJson(NewsHeadlinesResponse data) =>
     json.encode(data.toJson());
 
-class NewsHeadlinsResponse {
-  NewsHeadlinsResponse({
+class NewsHeadlinesResponse {
+  NewsHeadlinesResponse({
     this.status,
     this.totalResults,
     this.articles,
@@ -21,8 +21,8 @@ class NewsHeadlinsResponse {
   final int? totalResults;
   final List<Article?>? articles;
 
-  factory NewsHeadlinsResponse.fromJson(Map<String, dynamic> json) =>
-      NewsHeadlinsResponse(
+  factory NewsHeadlinesResponse.fromJson(Map<String, dynamic> json) =>
+      NewsHeadlinesResponse(
         status: json["status"],
         totalResults: json["totalResults"],
         articles: List<Article>.from(
