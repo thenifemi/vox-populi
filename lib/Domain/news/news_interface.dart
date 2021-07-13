@@ -11,5 +11,6 @@ abstract class NewsInterface {
   });
   Future<Either<NewsFailure, SearchNewsResponse>> searchNews({
     String? query,
+    int? page,
   });
 }

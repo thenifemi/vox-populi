@@ -1,13 +1,13 @@
 // To parse this JSON data, do
 //
-//     final newsHeadlinsResponse = newsHeadlinsResponseFromJson(jsonString);
+//     final newsHeadlinsResponse = newsHeadlinesResponseFromJson(jsonString);
 
 import 'dart:convert';
 
-NewsHeadlinesResponse newsHeadlinsResponseFromJson(String str) =>
+NewsHeadlinesResponse newsHeadlinesResponseFromJson(String str) =>
     NewsHeadlinesResponse.fromJson(json.decode(str));
 
-String newsHeadlinsResponseToJson(NewsHeadlinesResponse data) =>
+String newsHeadlinesResponseToJson(NewsHeadlinesResponse data) =>
     json.encode(data.toJson());
 
 class NewsHeadlinesResponse {
