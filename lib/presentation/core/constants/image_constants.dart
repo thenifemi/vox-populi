@@ -17,3 +17,7 @@ const String man3 = "assets/avatars/man3.png";
 const String woman1 = "assets/avatars/woman.png";
 const String woman2 = "assets/avatars/woman2.png";
 const String woman3 = "assets/avatars/woman3.png";
+
+//? Icons
+const String dashboardIcon = "assets/icons/dashboard_icon.svg";
+const String searchIcon = "assets/icons/search_icon.svg";
