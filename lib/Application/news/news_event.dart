@@ -6,6 +6,7 @@ class NewsEvent with _$NewsEvent {
     NewsCategory category,
   ) = _GetNewsHeadlines;
   const factory NewsEvent.searchNews(
-    String quesry,
+    String query,
+    int page,
   ) = _SearchNews;
 }

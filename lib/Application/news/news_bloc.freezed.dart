@@ -22,9 +22,10 @@ class _$NewsEventTearOff {
     );
   }
 
-  _SearchNews searchNews(String quesry) {
+  _SearchNews searchNews(String query, int page) {
     return _SearchNews(
-      quesry,
+      query,
+      page,
     );
   }
 }
@@ -37,13 +38,13 @@ mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(NewsCategory category) getNewsHeadlines,
-    required TResult Function(String quesry) searchNews,
+    required TResult Function(String query, int page) searchNews,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NewsCategory category)? getNewsHeadlines,
-    TResult Function(String quesry)? searchNews,
+    TResult Function(String query, int page)? searchNews,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +145,7 @@ class _$_GetNewsHeadlines implements _GetNewsHeadlines {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(NewsCategory category) getNewsHeadlines,
-    required TResult Function(String quesry) searchNews,
+    required TResult Function(String query, int page) searchNews,
   }) {
     return getNewsHeadlines(category);
   }
@@ -153,7 +154,7 @@ class _$_GetNewsHeadlines implements _GetNewsHeadlines {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NewsCategory category)? getNewsHeadlines,
-    TResult Function(String quesry)? searchNews,
+    TResult Function(String query, int page)? searchNews,
     required TResult orElse(),
   }) {
     if (getNewsHeadlines != null) {
@@ -199,7 +200,7 @@ abstract class _$SearchNewsCopyWith<$Res> {
   factory _$SearchNewsCopyWith(
           _SearchNews value, $Res Function(_SearchNews) then) =
       __$SearchNewsCopyWithImpl<$Res>;
-  $Res call({String quesry});
+  $Res call({String query, int page});
 }
 
 /// @nodoc
@@ -214,13 +215,18 @@ class __$SearchNewsCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? quesry = freezed,
+    Object? query = freezed,
+    Object? page = freezed,
   }) {
     return _then(_SearchNews(
-      quesry == freezed
-          ? _value.quesry
-          : quesry // ignore: cast_nullable_to_non_nullable
+      query == freezed
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
               as String,
+      page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -228,27 +234,33 @@ class __$SearchNewsCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchNews implements _SearchNews {
-  const _$_SearchNews(this.quesry);
+  const _$_SearchNews(this.query, this.page);
 
   @override
-  final String quesry;
+  final String query;
+  @override
+  final int page;
 
   @override
   String toString() {
-    return 'NewsEvent.searchNews(quesry: $quesry)';
+    return 'NewsEvent.searchNews(query: $query, page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SearchNews &&
-            (identical(other.quesry, quesry) ||
-                const DeepCollectionEquality().equals(other.quesry, quesry)));
+            (identical(other.query, query) ||
+                const DeepCollectionEquality().equals(other.query, query)) &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(quesry);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(query) ^
+      const DeepCollectionEquality().hash(page);
 
   @JsonKey(ignore: true)
   @override
@@ -259,20 +271,20 @@ class _$_SearchNews implements _SearchNews {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(NewsCategory category) getNewsHeadlines,
-    required TResult Function(String quesry) searchNews,
+    required TResult Function(String query, int page) searchNews,
   }) {
-    return searchNews(quesry);
+    return searchNews(query, page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NewsCategory category)? getNewsHeadlines,
-    TResult Function(String quesry)? searchNews,
+    TResult Function(String query, int page)? searchNews,
     required TResult orElse(),
   }) {
     if (searchNews != null) {
-      return searchNews(quesry);
+      return searchNews(query, page);
     }
     return orElse();
   }
@@ -301,9 +313,10 @@ class _$_SearchNews implements _SearchNews {
 }
 
 abstract class _SearchNews implements NewsEvent {
-  const factory _SearchNews(String quesry) = _$_SearchNews;
+  const factory _SearchNews(String query, int page) = _$_SearchNews;
 
-  String get quesry => throw _privateConstructorUsedError;
+  String get query => throw _privateConstructorUsedError;
+  int get page => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$SearchNewsCopyWith<_SearchNews> get copyWith =>
       throw _privateConstructorUsedError;
@@ -321,8 +334,10 @@ class _$NewsStateTearOff {
     return const _Loading();
   }
 
-  _Failure failure() {
-    return const _Failure();
+  _Failure failure(NewsFailure failure) {
+    return _Failure(
+      failure,
+    );
   }
 
   _SuccessForNews successForNews(NewsHeadlinesResponse newsHeadlinesResponse) {
@@ -347,7 +362,7 @@ mixin _$NewsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failure,
+    required TResult Function(NewsFailure failure) failure,
     required TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)
         successForNews,
     required TResult Function(SearchNewsResponse searchNewsResponse)
@@ -358,7 +373,7 @@ mixin _$NewsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failure,
+    TResult Function(NewsFailure failure)? failure,
     TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)?
         successForNews,
     TResult Function(SearchNewsResponse searchNewsResponse)? successForSearch,
@@ -440,7 +455,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failure,
+    required TResult Function(NewsFailure failure) failure,
     required TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)
         successForNews,
     required TResult Function(SearchNewsResponse searchNewsResponse)
@@ -454,7 +469,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failure,
+    TResult Function(NewsFailure failure)? failure,
     TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)?
         successForNews,
     TResult Function(SearchNewsResponse searchNewsResponse)? successForSearch,
@@ -538,7 +553,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failure,
+    required TResult Function(NewsFailure failure) failure,
     required TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)
         successForNews,
     required TResult Function(SearchNewsResponse searchNewsResponse)
@@ -552,7 +567,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failure,
+    TResult Function(NewsFailure failure)? failure,
     TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)?
         successForNews,
     TResult Function(SearchNewsResponse searchNewsResponse)? successForSearch,
@@ -601,6 +616,9 @@ abstract class _Loading implements NewsState {
 abstract class _$FailureCopyWith<$Res> {
   factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) then) =
       __$FailureCopyWithImpl<$Res>;
+  $Res call({NewsFailure failure});
+
+  $NewsFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -611,38 +629,69 @@ class __$FailureCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   _Failure get _value => super._value as _Failure;
+
+  @override
+  $Res call({
+    Object? failure = freezed,
+  }) {
+    return _then(_Failure(
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as NewsFailure,
+    ));
+  }
+
+  @override
+  $NewsFailureCopyWith<$Res> get failure {
+    return $NewsFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_Failure implements _Failure {
-  const _$_Failure();
+  const _$_Failure(this.failure);
+
+  @override
+  final NewsFailure failure;
 
   @override
   String toString() {
-    return 'NewsState.failure()';
+    return 'NewsState.failure(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Failure);
+    return identical(this, other) ||
+        (other is _Failure &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @JsonKey(ignore: true)
+  @override
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failure,
+    required TResult Function(NewsFailure failure) failure,
     required TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)
         successForNews,
     required TResult Function(SearchNewsResponse searchNewsResponse)
         successForSearch,
   }) {
-    return failure();
+    return failure(this.failure);
   }
 
   @override
@@ -650,14 +699,14 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failure,
+    TResult Function(NewsFailure failure)? failure,
     TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)?
         successForNews,
     TResult Function(SearchNewsResponse searchNewsResponse)? successForSearch,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure();
+      return failure(this.failure);
     }
     return orElse();
   }
@@ -692,7 +741,12 @@ class _$_Failure implements _Failure {
 }
 
 abstract class _Failure implements NewsState {
-  const factory _Failure() = _$_Failure;
+  const factory _Failure(NewsFailure failure) = _$_Failure;
+
+  NewsFailure get failure => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$FailureCopyWith<_Failure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -763,7 +817,7 @@ class _$_SuccessForNews implements _SuccessForNews {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failure,
+    required TResult Function(NewsFailure failure) failure,
     required TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)
         successForNews,
     required TResult Function(SearchNewsResponse searchNewsResponse)
@@ -777,7 +831,7 @@ class _$_SuccessForNews implements _SuccessForNews {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failure,
+    TResult Function(NewsFailure failure)? failure,
     TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)?
         successForNews,
     TResult Function(SearchNewsResponse searchNewsResponse)? successForSearch,
@@ -898,7 +952,7 @@ class _$_SuccessForSearch implements _SuccessForSearch {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failure,
+    required TResult Function(NewsFailure failure) failure,
     required TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)
         successForNews,
     required TResult Function(SearchNewsResponse searchNewsResponse)
@@ -912,7 +966,7 @@ class _$_SuccessForSearch implements _SuccessForSearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failure,
+    TResult Function(NewsFailure failure)? failure,
     TResult Function(NewsHeadlinesResponse newsHeadlinesResponse)?
         successForNews,
     TResult Function(SearchNewsResponse searchNewsResponse)? successForSearch,

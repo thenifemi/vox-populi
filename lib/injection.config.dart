@@ -7,6 +7,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import 'Application/news/news_bloc.dart' as _i6;
 import 'Application/theme/theme_bloc.dart' as _i5;
 import 'Domain/news/news_interface.dart' as _i3;
 import 'Infrastructure/news/news_interface.dart'
@@ -19,5 +20,6 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   gh.lazySingleton<_i3.NewsInterface>(() => _i4.NewsRepository());
   gh.factory<_i5.ThemeBloc>(() => _i5.ThemeBloc());
+  gh.factory<_i6.NewsBloc>(() => _i6.NewsBloc(get<_i3.NewsInterface>()));
   return get;
 }
