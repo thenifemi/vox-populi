@@ -7,10 +7,11 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../Domain/user/user.dart' as _i10;
+import '../../Domain/user/user.dart' as _i11;
 import '../edit_profile/edit_profile_screen.dart' as _i9;
 import '../get_started/get_started_screen.dart' as _i4;
 import '../home/home_screen.dart' as _i6;
+import '../search/search_screen.dart' as _i10;
 import '../settings/settings_screen.dart' as _i7;
 import '../settings/widgets/signout_screen.dart' as _i8;
 import '../signin/signin_screen.dart' as _i5;
@@ -60,7 +61,13 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<EditProfileScreenRouteArgs>();
           return _i9.EditProfileScreen(key: args.key, profile: args.profile);
-        })
+        }),
+    SearchScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i10.SearchScreen();
+        },
+        fullscreenDialog: true)
   };
 
   @override
@@ -73,7 +80,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SettingsScreenRoute.name, path: '/settings-screen'),
         _i1.RouteConfig(SignoutScreenRoute.name, path: '/signout-screen'),
         _i1.RouteConfig(EditProfileScreenRoute.name,
-            path: '/edit-profile-screen')
+            path: '/edit-profile-screen'),
+        _i1.RouteConfig(SearchScreenRoute.name, path: '/search-screen')
       ];
 }
 
@@ -110,7 +118,7 @@ class HomeScreenRoute extends _i1.PageRouteInfo {
 }
 
 class SettingsScreenRoute extends _i1.PageRouteInfo<SettingsScreenRouteArgs> {
-  SettingsScreenRoute({_i2.Key? key, required _i10.User profile})
+  SettingsScreenRoute({_i2.Key? key, required _i11.User profile})
       : super(name,
             path: '/settings-screen',
             args: SettingsScreenRouteArgs(key: key, profile: profile));
@@ -123,7 +131,7 @@ class SettingsScreenRouteArgs {
 
   final _i2.Key? key;
 
-  final _i10.User profile;
+  final _i11.User profile;
 }
 
 class SignoutScreenRoute extends _i1.PageRouteInfo {
@@ -134,7 +142,7 @@ class SignoutScreenRoute extends _i1.PageRouteInfo {
 
 class EditProfileScreenRoute
     extends _i1.PageRouteInfo<EditProfileScreenRouteArgs> {
-  EditProfileScreenRoute({_i2.Key? key, required _i10.User profile})
+  EditProfileScreenRoute({_i2.Key? key, required _i11.User profile})
       : super(name,
             path: '/edit-profile-screen',
             args: EditProfileScreenRouteArgs(key: key, profile: profile));
@@ -147,5 +155,11 @@ class EditProfileScreenRouteArgs {
 
   final _i2.Key? key;
 
-  final _i10.User profile;
+  final _i11.User profile;
+}
+
+class SearchScreenRoute extends _i1.PageRouteInfo {
+  const SearchScreenRoute() : super(name, path: '/search-screen');
+
+  static const String name = 'SearchScreenRoute';
 }
