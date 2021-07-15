@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
+import 'widgets/search_textfield.dart';
+import 'widgets/search_top_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -27,6 +29,21 @@ class SearchScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: heightSize * 0.03),
+              SearchTopWidget(
+                theme: theme,
+                appTheme: appTheme,
+              ),
+              SizedBox(height: heightSize * 0.03),
+              SearchTextfieldWidget(
+                onSaved: (v) {},
+                validator: (v) {},
+              ),
+              SizedBox(height: heightSize * 0.03),
+              Expanded(
+                child: Column(
+                  children: [],
+                ),
+              )
             ],
           ),
         ),
