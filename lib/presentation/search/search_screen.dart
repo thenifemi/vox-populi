@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/Application/theme/theme_bloc.dart';
-import 'package:vox_populi/presentation/core/components/app_annotated_widget.dart';
+
+import '../../Application/theme/theme_bloc.dart';
+import '../core/components/app_annotated_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -24,7 +25,9 @@ class SearchScreen extends StatelessWidget {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [],
+            children: [
+              SizedBox(height: heightSize * 0.03),
+            ],
           ),
         ),
       ),
