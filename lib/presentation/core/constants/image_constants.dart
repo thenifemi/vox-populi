@@ -1,4 +1,5 @@
 //? Logos
+// Logos by me, made on Canva https://www.canva.com/
 const String voxLogoBlack = "assets/logos/vox_logo_black.png";
 const String voxLogoWhite = "assets/logos/vox_logo_white.png";
 const String voxIconLogoBlack = "assets/logos/vox_icon_logo_black.png";
@@ -11,6 +12,7 @@ const String getStartedBottomBg = "assets/images/get_started_bottom_bg.png";
 const String testNewsImage = "assets/images/test_news_image.jpg";
 
 //? Avatars
+// Avatars by Freepik https://www.freepik.com/free-vector/
 const String man1 = "assets/avatars/man.png";
 const String man2 = "assets/avatars/man2.png";
 const String man3 = "assets/avatars/man3.png";
