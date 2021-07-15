@@ -52,7 +52,13 @@ class SearchScreen extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: heightSize * 0.03),
-                    LottieBuilder.asset(searchAnimation),
+                    SizedBox(
+                      height: heightSize * 0.3,
+                      child: LottieBuilder.asset(
+                        searchAnimation,
+                        repeat: false,
+                      ),
+                    ),
                   ],
                 ),
               )
