@@ -18,6 +18,7 @@ const String woman1 = "assets/avatars/woman.png";
 const String woman2 = "assets/avatars/woman2.png";
 const String woman3 = "assets/avatars/woman3.png";
 
-//? Icons
-const String dashboardIcon = "assets/icons/dashboard_icon.svg";
-const String searchIcon = "assets/icons/search_icon.svg";
+//? Animations
+// https://storyset.com/web Web illustrations by Storyset
+// Converted to lottie https://lottiefiles.com/svg-to-lottie/convert
+const String searchAnimation = "assets/animations/search_animation.json";

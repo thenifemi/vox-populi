@@ -1,5 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
+import 'package:vox_populi/presentation/core/constants/image_constants.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
@@ -41,7 +45,15 @@ class SearchScreen extends StatelessWidget {
               SizedBox(height: heightSize * 0.03),
               Expanded(
                 child: Column(
-                  children: [],
+                  children: [
+                    AutoSizeText(
+                      "Search thousands of articles from around the world.",
+                      style: theme?.textTheme.headline5,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: heightSize * 0.03),
+                    LottieBuilder.asset(searchAnimation),
+                  ],
                 ),
               )
             ],

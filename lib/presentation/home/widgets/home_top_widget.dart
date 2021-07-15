@@ -63,6 +63,7 @@ class HomeTopWidget extends StatelessWidget {
               size: 20,
             ),
           ),
+          const SizedBox(width: 10),
           GestureDetector(
             onTap: () async {
               final profileBox = await Hive.openBox<User>('user');
