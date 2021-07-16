@@ -1,13 +1,14 @@
 import 'dart:io';
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/presentation/core/constants/image_constants.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
 import '../../core/constants/color_constants.dart';
+import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
 
 class ArticleWebviewWidget extends StatefulWidget {
@@ -63,10 +64,27 @@ class _ArticleWebviewWidgetState extends State<ArticleWebviewWidget> {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: WebView(
               initialUrl:
                   "https://www.cbssports.com/golf/news/2021-british-open-leaderboard-live-coverage-schedule-golf-scores-today-in-round-2-on-friday/live/",
+              navigationDelegate: (NavigationRequest request) {
+                Flushbar(
+                  message: 'Sorry! You can not navigate out of this page.',
+                  icon: const Icon(
+                    Icons.warning_rounded,
+                    color: Colors.red,
+                    size: 24.0,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  flushbarPosition: FlushbarPosition.TOP,
+                  flushbarStyle: FlushbarStyle.FLOATING,
+                  duration: const Duration(seconds: 6),
+                  margin: const EdgeInsets.all(20),
+                ).show(context);
+
+                return NavigationDecision.prevent;
+              },
             ),
           ),
         ],
