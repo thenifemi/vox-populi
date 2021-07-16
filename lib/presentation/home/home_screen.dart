@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../Application/theme/theme_bloc.dart';
+import '../../Domain/news/enums.dart';
 import '../core/components/app_annotated_widget.dart';
 import 'widgets/app_tab_bar.dart';
 import 'widgets/home_top_widget.dart';
@@ -17,15 +19,11 @@ class HomeScreen extends StatelessWidget {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
-    final _tempHealineList = [
-      'General',
-      'Politics',
-      'Technology',
-      'Health',
-      'Entertainment',
-      'Sports',
-      'Business',
-    ];
+    final headlineList = NewsCategory.values
+        .map((category) => toBeginningOfSentenceCase(
+              newsCategoryToString(category),
+            ))
+        .toList();
 
     return AppAnnotatedWidget(
       appTheme: appTheme,
@@ -45,14 +43,14 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: heightSize * 0.01),
               Expanded(
                 child: DefaultTabController(
-                  length: _tempHealineList.length,
+                  length: headlineList.length,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppTabBar(
                         theme: theme,
                         appTheme: appTheme,
-                        categories: _tempHealineList,
+                        categories: headlineList,
                       ),
                       SizedBox(height: heightSize * 0.02),
                       Padding(
@@ -66,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                       Expanded(
                         child: TabBarView(
                           physics: const BouncingScrollPhysics(),
-                          children: _tempHealineList
+                          children: headlineList
                               .map((e) => ListView.builder(
                                     physics: const BouncingScrollPhysics(),
                                     itemCount: 5,

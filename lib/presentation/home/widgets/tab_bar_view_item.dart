@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/presentation/core/theme/theme.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
 import '../../core/constants/color_constants.dart';
@@ -20,7 +19,6 @@ class TabBarViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
-    final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
     return Padding(
       padding: const EdgeInsets.all(5.0),

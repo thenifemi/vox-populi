@@ -1,11 +1,11 @@
 enum NewsCategory {
+  general,
+  technology,
   business,
   entertainment,
-  general,
   health,
   science,
   sports,
-  technology,
 }
 
 String newsCategoryToString(NewsCategory category) {
