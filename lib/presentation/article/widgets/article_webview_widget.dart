@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vox_populi/presentation/core/constants/image_constants.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
@@ -34,23 +35,32 @@ class _ArticleWebviewWidgetState extends State<ArticleWebviewWidget> {
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(height: heightSize * 0.03),
           Container(
             width: widthSize,
             padding: const EdgeInsets.all(20),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                onPressed: () {
-                  context.router.pop();
-                },
-                icon: Icon(
-                  Icons.cancel_rounded,
-                  size: 30,
-                  color: appTheme == AppTheme.light
-                      ? AppColors.eggshell
-                      : AppColors.grey,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  appTheme == AppTheme.light
+                      ? voxTextLogoBlack
+                      : voxTextLogoWhite,
+                  height: 50,
                 ),
-              ),
+                IconButton(
+                  onPressed: () {
+                    context.router.pop();
+                  },
+                  icon: Icon(
+                    Icons.cancel_rounded,
+                    size: 30,
+                    color: appTheme == AppTheme.dark
+                        ? AppColors.eggshell
+                        : AppColors.grey,
+                  ),
+                ),
+              ],
             ),
           ),
           const Expanded(
