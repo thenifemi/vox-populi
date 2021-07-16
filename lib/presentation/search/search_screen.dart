@@ -1,12 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:vox_populi/presentation/core/constants/image_constants.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
+import '../core/constants/image_constants.dart';
 import 'widgets/search_textfield.dart';
 import 'widgets/search_top_widget.dart';
 

@@ -60,7 +60,6 @@ class HomeTopWidget extends StatelessWidget {
             },
             icon: const Icon(
               Icons.search_rounded,
-              size: 20,
             ),
           ),
           const SizedBox(width: 10),
@@ -73,25 +72,28 @@ class HomeTopWidget extends StatelessWidget {
                 profile: profile!,
               ));
             },
-            child: Hero(
-              tag: 'avatar',
-              child: FutureBuilder<Box<User>>(
-                  future: Hive.openBox<User>('user'),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SpinKitPulse(
-                        size: 20,
-                        color: appTheme == AppTheme.light
-                            ? AppColors.grey
-                            : AppColors.eggshell,
-                      );
-                    } else {
-                      return Image.asset(
-                        snapshot.data!.get(0)!.avatar!,
-                        height: heightSize * 0.04,
-                      );
-                    }
-                  }),
+            child: SizedBox(
+              width: 40,
+              child: Hero(
+                tag: 'avatar',
+                child: FutureBuilder<Box<User>>(
+                    future: Hive.openBox<User>('user'),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return SpinKitPulse(
+                          size: 20,
+                          color: appTheme == AppTheme.light
+                              ? AppColors.grey
+                              : AppColors.eggshell,
+                        );
+                      } else {
+                        return Image.asset(
+                          snapshot.data!.get(0)!.avatar!,
+                          height: heightSize * 0.04,
+                        );
+                      }
+                    }),
+              ),
             ),
           )
         ],
