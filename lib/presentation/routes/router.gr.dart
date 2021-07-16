@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../Domain/news/article.dart' as _i13;
 import '../../Domain/user/user.dart' as _i12;
 import '../article/article_screen.dart' as _i11;
 import '../edit_profile/edit_profile_screen.dart' as _i9;
@@ -71,8 +72,10 @@ class AppRouter extends _i1.RootStackRouter {
         fullscreenDialog: true),
     ArticleScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i11.ArticleScreen();
+        builder: (data) {
+          final args = data.argsAs<ArticleScreenRouteArgs>(
+              orElse: () => const ArticleScreenRouteArgs());
+          return _i11.ArticleScreen(key: args.key, article: args.article);
         },
         fullscreenDialog: true)
   };
@@ -172,8 +175,19 @@ class SearchScreenRoute extends _i1.PageRouteInfo {
   static const String name = 'SearchScreenRoute';
 }
 
-class ArticleScreenRoute extends _i1.PageRouteInfo {
-  const ArticleScreenRoute() : super(name, path: '/article-screen');
+class ArticleScreenRoute extends _i1.PageRouteInfo<ArticleScreenRouteArgs> {
+  ArticleScreenRoute({_i2.Key? key, _i13.Article? article})
+      : super(name,
+            path: '/article-screen',
+            args: ArticleScreenRouteArgs(key: key, article: article));
 
   static const String name = 'ArticleScreenRoute';
+}
+
+class ArticleScreenRouteArgs {
+  const ArticleScreenRouteArgs({this.key, this.article});
+
+  final _i2.Key? key;
+
+  final _i13.Article? article;
 }

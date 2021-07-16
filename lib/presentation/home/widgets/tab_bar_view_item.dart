@@ -4,11 +4,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vox_populi/presentation/routes/router.gr.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
 import '../../core/constants/color_constants.dart';
 import '../../core/constants/image_constants.dart';
+import '../../routes/router.gr.dart';
 
 class TabBarViewItem extends StatelessWidget {
   const TabBarViewItem({
@@ -24,7 +24,7 @@ class TabBarViewItem extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        context.router.push(const ArticleScreenRoute());
+        context.router.push(ArticleScreenRoute());
       },
       child: Padding(
         padding: const EdgeInsets.all(5.0),

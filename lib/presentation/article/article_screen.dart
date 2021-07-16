@@ -4,15 +4,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../Application/theme/theme_bloc.dart';
+import '../../Domain/news/article.dart';
 import '../core/components/app_annotated_widget.dart';
 import '../core/constants/color_constants.dart';
 import '../core/constants/image_constants.dart';
 import '../core/theme/theme.dart';
 
 class ArticleScreen extends StatelessWidget {
-  const ArticleScreen({Key? key}) : super(key: key);
+  const ArticleScreen({Key? key, this.article}) : super(key: key);
+
+  final Article? article;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +25,10 @@ class ArticleScreen extends StatelessWidget {
 
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
+
+    final pos =
+        "After an extremely fun first day at the 149th Open Championship, the tournament has started to take shape for whatever the next three days have in store at Royal St. George's. Louis Oosthuizen and Jo… [+1092 chars]"
+            .lastIndexOf('[');
 
     return AppAnnotatedWidget(
       appTheme: appTheme,
@@ -92,9 +100,41 @@ class ArticleScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(
+                      "After an extremely fun first day at the 149th Open Championship, the tournament has started to take shape for whatever the next three days have in store at Royal St. George's. Louis Oosthuizen and Jo… [+1092 chars]"
+                          .substring(0, pos),
+                      style: theme?.textTheme.subtitle1,
+                      minFontSize: 20,
+                    ),
+                    const SizedBox(height: 20),
+                    const Align(
+                      alignment: Alignment.topRight,
+                      child: AutoSizeText(
+                        "Read entire article",
+                        style: TextStyle(
+                          fontFamily: 'Ubuntu',
+                          fontSize: 16.0,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: SvgPicture.asset(newsVectorImage),
+                ),
+              )
             ],
           ),
         ),
