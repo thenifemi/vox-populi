@@ -12,6 +12,7 @@ import '../core/components/app_annotated_widget.dart';
 import '../core/constants/color_constants.dart';
 import '../core/constants/image_constants.dart';
 import '../core/theme/theme.dart';
+import '../routes/router.gr.dart';
 
 class ArticleScreen extends StatelessWidget {
   const ArticleScreen({Key? key, this.article}) : super(key: key);
@@ -114,15 +115,20 @@ class ArticleScreen extends StatelessWidget {
                       style: theme?.textTheme.subtitle1,
                       minFontSize: 20,
                     ),
-                    const SizedBox(height: 20),
-                    const Align(
+                    const SizedBox(height: 10),
+                    Align(
                       alignment: Alignment.topRight,
-                      child: AutoSizeText(
-                        "Read entire article",
-                        style: TextStyle(
-                          fontFamily: 'Ubuntu',
-                          fontSize: 16.0,
-                          color: Colors.blue,
+                      child: RawMaterialButton(
+                        onPressed: () => context.router.push(
+                          const ArticleWebviewWidgetRoute(),
+                        ),
+                        child: const AutoSizeText(
+                          "Read entire article",
+                          style: TextStyle(
+                            fontFamily: 'Ubuntu',
+                            fontSize: 16.0,
+                            color: Colors.blue,
+                          ),
                         ),
                       ),
                     ),
