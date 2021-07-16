@@ -7,7 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../Domain/user/user.dart' as _i11;
+import '../../Domain/user/user.dart' as _i12;
+import '../article/article_screen.dart' as _i11;
 import '../edit_profile/edit_profile_screen.dart' as _i9;
 import '../get_started/get_started_screen.dart' as _i4;
 import '../home/home_screen.dart' as _i6;
@@ -67,6 +68,12 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i10.SearchScreen();
         },
+        fullscreenDialog: true),
+    ArticleScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i11.ArticleScreen();
+        },
         fullscreenDialog: true)
   };
 
@@ -81,7 +88,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SignoutScreenRoute.name, path: '/signout-screen'),
         _i1.RouteConfig(EditProfileScreenRoute.name,
             path: '/edit-profile-screen'),
-        _i1.RouteConfig(SearchScreenRoute.name, path: '/search-screen')
+        _i1.RouteConfig(SearchScreenRoute.name, path: '/search-screen'),
+        _i1.RouteConfig(ArticleScreenRoute.name, path: '/article-screen')
       ];
 }
 
@@ -118,7 +126,7 @@ class HomeScreenRoute extends _i1.PageRouteInfo {
 }
 
 class SettingsScreenRoute extends _i1.PageRouteInfo<SettingsScreenRouteArgs> {
-  SettingsScreenRoute({_i2.Key? key, required _i11.User profile})
+  SettingsScreenRoute({_i2.Key? key, required _i12.User profile})
       : super(name,
             path: '/settings-screen',
             args: SettingsScreenRouteArgs(key: key, profile: profile));
@@ -131,7 +139,7 @@ class SettingsScreenRouteArgs {
 
   final _i2.Key? key;
 
-  final _i11.User profile;
+  final _i12.User profile;
 }
 
 class SignoutScreenRoute extends _i1.PageRouteInfo {
@@ -142,7 +150,7 @@ class SignoutScreenRoute extends _i1.PageRouteInfo {
 
 class EditProfileScreenRoute
     extends _i1.PageRouteInfo<EditProfileScreenRouteArgs> {
-  EditProfileScreenRoute({_i2.Key? key, required _i11.User profile})
+  EditProfileScreenRoute({_i2.Key? key, required _i12.User profile})
       : super(name,
             path: '/edit-profile-screen',
             args: EditProfileScreenRouteArgs(key: key, profile: profile));
@@ -155,11 +163,17 @@ class EditProfileScreenRouteArgs {
 
   final _i2.Key? key;
 
-  final _i11.User profile;
+  final _i12.User profile;
 }
 
 class SearchScreenRoute extends _i1.PageRouteInfo {
   const SearchScreenRoute() : super(name, path: '/search-screen');
 
   static const String name = 'SearchScreenRoute';
+}
+
+class ArticleScreenRoute extends _i1.PageRouteInfo {
+  const ArticleScreenRoute() : super(name, path: '/article-screen');
+
+  static const String name = 'ArticleScreenRoute';
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 
+import '../article/article_screen.dart';
 import '../edit_profile/edit_profile_screen.dart';
 import '../get_started/get_started_screen.dart';
 import '../home/home_screen.dart';
@@ -19,6 +20,7 @@ import '../splash/splash_screen.dart';
     MaterialRoute(page: SignoutScreen),
     MaterialRoute(page: EditProfileScreen),
     MaterialRoute(page: SearchScreen, fullscreenDialog: true),
+    MaterialRoute(page: ArticleScreen, fullscreenDialog: true),
   ],
 )
 class $AppRouter {}
