@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../core/components/app_annotated_widget.dart';
@@ -53,9 +53,8 @@ class SearchScreen extends StatelessWidget {
                     SizedBox(height: heightSize * 0.03),
                     SizedBox(
                       height: heightSize * 0.3,
-                      child: LottieBuilder.asset(
-                        searchAnimation,
-                        repeat: false,
+                      child: SvgPicture.asset(
+                        searchVectorImage,
                       ),
                     ),
                   ],

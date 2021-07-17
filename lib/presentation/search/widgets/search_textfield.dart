@@ -33,7 +33,7 @@ class SearchTextfieldWidget extends StatelessWidget {
       textCapitalization: TextCapitalization.words,
       style: theme?.textTheme.bodyText2,
       decoration: InputDecoration(
-        hintText: 'Search any article',
+        hintText: 'Search any topic',
         filled: true,
         suffixIcon: Icon(
           Icons.search_rounded,
