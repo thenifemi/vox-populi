@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:vox_populi/Domain/news/article.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
@@ -25,11 +26,13 @@ class TabBarViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
 
-    print(article.toJson());
+    final date = DateFormat('EEEE d MMMM').format(article.publishedAt!);
 
     return GestureDetector(
       onTap: () {
-        context.router.push(ArticleScreenRoute());
+        context.router.push(ArticleScreenRoute(
+          article: article,
+        ));
       },
       child: Padding(
         padding: const EdgeInsets.all(5.0),
@@ -67,14 +70,14 @@ class TabBarViewItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AutoSizeText(
-                          "Supreme Court Restricts Police Powers To Enter A Home Without A Warrant - NPR",
+                          article.title!,
                           style: theme?.textTheme.headline6,
                           minFontSize: 24,
                           maxLines: 3,
                         ),
                         const SizedBox(height: 10),
                         AutoSizeText(
-                          'NPR • Wednesday 23 June'.toUpperCase(),
+                          '${article.source?.name} • $date'.toUpperCase(),
                           style: theme?.textTheme.subtitle2,
                         ),
                         Align(
