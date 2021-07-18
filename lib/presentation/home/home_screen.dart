@@ -104,19 +104,31 @@ class HomeScreen extends StatelessWidget {
                                             final newsHeadlinesResponse =
                                                 result.newsHeadlinesResponse;
 
-                                            return ListView.builder(
-                                              physics:
-                                                  const BouncingScrollPhysics(),
-                                              itemCount: newsHeadlinesResponse
-                                                  .articles?.length,
-                                              padding: const EdgeInsets.all(0),
-                                              itemBuilder: (context, i) {
-                                                return TabBarViewItem(
-                                                  article: newsHeadlinesResponse
-                                                      .articles![i]!,
-                                                  heightSize: heightSize,
-                                                );
+                                            return RefreshIndicator(
+                                              onRefresh: () async {
+                                                BlocProvider.of<NewsBloc>(
+                                                        context)
+                                                    .add(NewsEvent
+                                                        .getNewsHeadlines(
+                                                  category!,
+                                                ));
                                               },
+                                              child: ListView.builder(
+                                                physics:
+                                                    const BouncingScrollPhysics(),
+                                                itemCount: newsHeadlinesResponse
+                                                    .articles?.length,
+                                                padding:
+                                                    const EdgeInsets.all(0),
+                                                itemBuilder: (context, i) {
+                                                  return TabBarViewItem(
+                                                    article:
+                                                        newsHeadlinesResponse
+                                                            .articles![i]!,
+                                                    heightSize: heightSize,
+                                                  );
+                                                },
+                                              ),
                                             );
                                           },
                                           failure: (result) {

@@ -63,7 +63,7 @@ class TabBarViewItem extends StatelessWidget {
                   bottomRight: Radius.circular(10),
                 ),
                 child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                  filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(
