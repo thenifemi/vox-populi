@@ -2,17 +2,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-import 'package:vox_populi/Application/news/news_bloc.dart';
-import 'package:vox_populi/Domain/news/article.dart';
-import 'package:vox_populi/injection.dart';
-import 'package:vox_populi/presentation/core/constants/color_constants.dart';
-import 'package:vox_populi/presentation/core/constants/image_constants.dart';
-import 'package:vox_populi/presentation/core/theme/theme.dart';
 
+import '../../Application/news/news_bloc.dart';
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/news/enums.dart';
+import '../../injection.dart';
 import '../core/components/app_annotated_widget.dart';
+import '../core/constants/color_constants.dart';
+import '../core/constants/image_constants.dart';
+import '../core/theme/theme.dart';
 import 'widgets/app_tab_bar.dart';
 import 'widgets/home_top_widget.dart';
 import 'widgets/tab_bar_view_item.dart';
@@ -100,8 +100,32 @@ class HomeScreen extends StatelessWidget {
                                               ),
                                             );
                                           },
-                                          successForNews: (result) {},
-                                          failure: (result) {},
+                                          successForNews: (result) {
+                                            final newsHeadlinesResponse =
+                                                result.newsHeadlinesResponse;
+
+                                            return ListView.builder(
+                                              physics:
+                                                  const BouncingScrollPhysics(),
+                                              itemCount: newsHeadlinesResponse
+                                                  .articles?.length,
+                                              padding: const EdgeInsets.all(0),
+                                              itemBuilder: (context, i) {
+                                                return TabBarViewItem(
+                                                  article: newsHeadlinesResponse
+                                                      .articles![i]!,
+                                                  heightSize: heightSize,
+                                                );
+                                              },
+                                            );
+                                          },
+                                          failure: (result) {
+                                            return Center(
+                                              child: SvgPicture.asset(
+                                                errorVectorImage,
+                                              ),
+                                            );
+                                          },
                                         );
                                       },
                                     ),
