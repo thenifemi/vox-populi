@@ -1,10 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:vox_populi/Application/news/news_bloc.dart';
 import 'package:vox_populi/Domain/news/article.dart';
 import 'package:vox_populi/injection.dart';
+import 'package:vox_populi/presentation/core/constants/color_constants.dart';
+import 'package:vox_populi/presentation/core/constants/image_constants.dart';
+import 'package:vox_populi/presentation/core/theme/theme.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/news/enums.dart';
@@ -73,14 +77,31 @@ class HomeScreen extends StatelessWidget {
                                       ..add(NewsEvent.getNewsHeadlines(
                                         category!,
                                       )),
-                                    child: ListView.builder(
-                                      physics: const BouncingScrollPhysics(),
-                                      itemCount: 5,
-                                      padding: const EdgeInsets.all(0),
-                                      itemBuilder: (context, i) {
-                                        return TabBarViewItem(
-                                          article: Article(),
-                                          heightSize: heightSize,
+                                    child: BlocBuilder<NewsBloc, NewsState>(
+                                      builder: (context, state) {
+                                        return state.maybeMap(
+                                          orElse: () {
+                                            return Center(
+                                              child: Image.asset(
+                                                appTheme == AppTheme.light
+                                                    ? voxIconLogoBlack
+                                                    : voxIconLogoWhite,
+                                              ),
+                                            );
+                                          },
+                                          loading: (_) {
+                                            return Center(
+                                              child: SpinKitWave(
+                                                size: 60,
+                                                color:
+                                                    appTheme == AppTheme.light
+                                                        ? AppColors.greyAccent
+                                                        : AppColors.eggshell,
+                                              ),
+                                            );
+                                          },
+                                          successForNews: (result) {},
+                                          failure: (result) {},
                                         );
                                       },
                                     ),
