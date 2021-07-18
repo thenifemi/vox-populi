@@ -22,7 +22,7 @@ class NewsRepository implements NewsInterface {
     String? category,
   }) async {
     final getNewsHeadlinesUrl =
-        '$baseUrl/top-headlines?country=us/&apiKey=$apikey&category=$category';
+        '$baseUrl/top-headlines?country=us&apiKey=$apikey&category=$category';
 
     try {
       final response = await http.get(

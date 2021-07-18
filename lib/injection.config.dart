@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'Application/news/news_bloc.dart' as _i6;
 import 'Application/theme/theme_bloc.dart' as _i5;
 import 'Domain/news/news_interface.dart' as _i3;
-import 'Infrastructure/news/news_interface.dart'
+import 'Infrastructure/news/news_repository.dart'
     as _i4; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars

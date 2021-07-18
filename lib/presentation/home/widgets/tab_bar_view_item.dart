@@ -25,6 +25,8 @@ class TabBarViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
 
+    print(article.toJson());
+
     return GestureDetector(
       onTap: () {
         context.router.push(ArticleScreenRoute());

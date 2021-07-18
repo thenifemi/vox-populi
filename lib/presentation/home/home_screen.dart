@@ -103,6 +103,8 @@ class HomeScreen extends StatelessWidget {
                                           successForNews: (result) {
                                             final newsHeadlinesResponse =
                                                 result.newsHeadlinesResponse;
+                                            print(
+                                                newsHeadlinesResponse.toJson());
 
                                             return ListView.builder(
                                               physics:
@@ -120,6 +122,7 @@ class HomeScreen extends StatelessWidget {
                                             );
                                           },
                                           failure: (result) {
+                                            print("BRUH!");
                                             return Center(
                                               child: SvgPicture.asset(
                                                 errorVectorImage,
