@@ -10,6 +10,7 @@ const String voxTextLogoWhite = "assets/logos/vox_text_logo_white.png";
 //? Images
 const String getStartedBottomBg = "assets/images/get_started_bottom_bg.png";
 const String testNewsImage = "assets/images/test_news_image.jpg";
+const String emptyImage = "https://picsum.photos/seed/picsum/200";
 const String newsVectorImage = "assets/images/news_vector_image.svg";
 const String searchVectorImage = "assets/images/search_vector_image.svg";
 const String errorVectorImage = "assets/images/error_vector_image.svg";

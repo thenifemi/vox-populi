@@ -43,7 +43,7 @@ class TabBarViewItem extends StatelessWidget {
               height: heightSize / 2.6,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(article.urlToImage ?? testNewsImage),
+                  image: NetworkImage(article.urlToImage ?? emptyImage),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
