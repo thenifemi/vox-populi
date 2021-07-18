@@ -40,10 +40,10 @@ class TabBarViewItem extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             Container(
-              height: heightSize / 2,
+              height: heightSize / 2.6,
               decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage(testNewsImage),
+                image: DecorationImage(
+                  image: NetworkImage(article.urlToImage ?? testNewsImage),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
