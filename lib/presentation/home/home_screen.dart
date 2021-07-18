@@ -2,6 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:vox_populi/Application/news/news_bloc.dart';
+import 'package:vox_populi/Domain/news/article.dart';
+import 'package:vox_populi/injection.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/news/enums.dart';
@@ -65,15 +68,22 @@ class HomeScreen extends StatelessWidget {
                         child: TabBarView(
                           physics: const BouncingScrollPhysics(),
                           children: headlineList
-                              .map((e) => ListView.builder(
-                                    physics: const BouncingScrollPhysics(),
-                                    itemCount: 5,
-                                    padding: const EdgeInsets.all(0),
-                                    itemBuilder: (context, i) {
-                                      return TabBarViewItem(
-                                        heightSize: heightSize,
-                                      );
-                                    },
+                              .map((category) => BlocProvider(
+                                    create: (context) => getIt<NewsBloc>()
+                                      ..add(NewsEvent.getNewsHeadlines(
+                                        category!,
+                                      )),
+                                    child: ListView.builder(
+                                      physics: const BouncingScrollPhysics(),
+                                      itemCount: 5,
+                                      padding: const EdgeInsets.all(0),
+                                      itemBuilder: (context, i) {
+                                        return TabBarViewItem(
+                                          article: Article(),
+                                          heightSize: heightSize,
+                                        );
+                                      },
+                                    ),
                                   ))
                               .toList(),
                         ),

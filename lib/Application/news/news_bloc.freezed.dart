@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NewsEventTearOff {
   const _$NewsEventTearOff();
 
-  _GetNewsHeadlines getNewsHeadlines(NewsCategory category) {
+  _GetNewsHeadlines getNewsHeadlines(String category) {
     return _GetNewsHeadlines(
       category,
     );
@@ -37,13 +37,13 @@ const $NewsEvent = _$NewsEventTearOff();
 mixin _$NewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory category) getNewsHeadlines,
+    required TResult Function(String category) getNewsHeadlines,
     required TResult Function(String query, int page) searchNews,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category)? getNewsHeadlines,
+    TResult Function(String category)? getNewsHeadlines,
     TResult Function(String query, int page)? searchNews,
     required TResult orElse(),
   }) =>
@@ -83,7 +83,7 @@ abstract class _$GetNewsHeadlinesCopyWith<$Res> {
   factory _$GetNewsHeadlinesCopyWith(
           _GetNewsHeadlines value, $Res Function(_GetNewsHeadlines) then) =
       __$GetNewsHeadlinesCopyWithImpl<$Res>;
-  $Res call({NewsCategory category});
+  $Res call({String category});
 }
 
 /// @nodoc
@@ -105,7 +105,7 @@ class __$GetNewsHeadlinesCopyWithImpl<$Res>
       category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as NewsCategory,
+              as String,
     ));
   }
 }
@@ -116,7 +116,7 @@ class _$_GetNewsHeadlines implements _GetNewsHeadlines {
   const _$_GetNewsHeadlines(this.category);
 
   @override
-  final NewsCategory category;
+  final String category;
 
   @override
   String toString() {
@@ -144,7 +144,7 @@ class _$_GetNewsHeadlines implements _GetNewsHeadlines {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory category) getNewsHeadlines,
+    required TResult Function(String category) getNewsHeadlines,
     required TResult Function(String query, int page) searchNews,
   }) {
     return getNewsHeadlines(category);
@@ -153,7 +153,7 @@ class _$_GetNewsHeadlines implements _GetNewsHeadlines {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category)? getNewsHeadlines,
+    TResult Function(String category)? getNewsHeadlines,
     TResult Function(String query, int page)? searchNews,
     required TResult orElse(),
   }) {
@@ -187,9 +187,9 @@ class _$_GetNewsHeadlines implements _GetNewsHeadlines {
 }
 
 abstract class _GetNewsHeadlines implements NewsEvent {
-  const factory _GetNewsHeadlines(NewsCategory category) = _$_GetNewsHeadlines;
+  const factory _GetNewsHeadlines(String category) = _$_GetNewsHeadlines;
 
-  NewsCategory get category => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GetNewsHeadlinesCopyWith<_GetNewsHeadlines> get copyWith =>
       throw _privateConstructorUsedError;
@@ -270,7 +270,7 @@ class _$_SearchNews implements _SearchNews {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory category) getNewsHeadlines,
+    required TResult Function(String category) getNewsHeadlines,
     required TResult Function(String query, int page) searchNews,
   }) {
     return searchNews(query, page);
@@ -279,7 +279,7 @@ class _$_SearchNews implements _SearchNews {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory category)? getNewsHeadlines,
+    TResult Function(String category)? getNewsHeadlines,
     TResult Function(String query, int page)? searchNews,
     required TResult orElse(),
   }) {

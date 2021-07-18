@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-import '../../Domain/news/enums.dart';
 import '../../Domain/news/news_failure.dart';
 import '../../Domain/news/news_headlines_response.dart';
 import '../../Domain/news/news_interface.dart';
@@ -20,11 +19,10 @@ class NewsRepository implements NewsInterface {
 
   @override
   Future<Either<NewsFailure, NewsHeadlinesResponse>> getNewsHeadlines({
-    NewsCategory? category,
+    String? category,
   }) async {
-    final _category = newsCategoryToString(category!);
     final getNewsHeadlinesUrl =
-        '$baseUrl/top-headlines?country=us/&apiKey=$apikey&category=$_category';
+        '$baseUrl/top-headlines?country=us/&apiKey=$apikey&category=$category';
 
     try {
       final response = await http.get(

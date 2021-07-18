@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../Domain/news/enums.dart';
 import '../../Domain/news/news_failure.dart';
 import '../../Domain/news/news_headlines_response.dart';
 import '../../Domain/news/news_interface.dart';

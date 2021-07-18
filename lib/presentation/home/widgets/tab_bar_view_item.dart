@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vox_populi/Domain/news/article.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
 import '../../core/constants/color_constants.dart';
@@ -13,9 +14,11 @@ import '../../routes/router.gr.dart';
 class TabBarViewItem extends StatelessWidget {
   const TabBarViewItem({
     Key? key,
+    required this.article,
     required this.heightSize,
   }) : super(key: key);
 
+  final Article article;
   final double heightSize;
 
   @override
