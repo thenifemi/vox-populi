@@ -44,13 +44,13 @@ class ArticleScreen extends StatelessWidget {
               Stack(
                 children: [
                   Hero(
-                    tag: 'article-image',
+                    tag: article!.title!,
                     child: Container(
                       height: heightSize / 3.5,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
-                            article!.urlToImage ?? emptyImage,
+                            article?.urlToImage ?? emptyImage,
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -114,7 +114,8 @@ class ArticleScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      article!.content!.substring(0, pos),
+                      article?.content?.substring(0, pos) ??
+                          'No content available.',
                       style: theme?.textTheme.subtitle1,
                       minFontSize: 20,
                     ),

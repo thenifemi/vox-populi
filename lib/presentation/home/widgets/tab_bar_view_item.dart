@@ -46,16 +46,20 @@ class _TabBarViewItemState extends State<TabBarViewItem>
         padding: const EdgeInsets.all(5.0),
         child: Column(
           children: [
-            Container(
-              height: widget.heightSize / 2.6,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(widget.article.urlToImage ?? emptyImage),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
+            Hero(
+              tag: widget.article.title!,
+              child: Container(
+                height: widget.heightSize / 2.6,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image:
+                        NetworkImage(widget.article.urlToImage ?? emptyImage),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
                 ),
               ),
             ),
