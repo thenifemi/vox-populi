@@ -12,7 +12,7 @@ import '../../core/constants/color_constants.dart';
 import '../../core/constants/image_constants.dart';
 import '../../routes/router.gr.dart';
 
-class TabBarViewItem extends StatelessWidget {
+class TabBarViewItem extends StatefulWidget {
   const TabBarViewItem({
     Key? key,
     required this.article,
@@ -23,15 +23,23 @@ class TabBarViewItem extends StatelessWidget {
   final double heightSize;
 
   @override
+  _TabBarViewItemState createState() => _TabBarViewItemState();
+}
+
+class _TabBarViewItemState extends State<TabBarViewItem>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
 
-    final date = DateFormat('EEEE d MMMM').format(article.publishedAt!);
+    final date = DateFormat('EEEE d MMMM').format(widget.article.publishedAt!);
 
     return GestureDetector(
       onTap: () {
         context.router.push(ArticleScreenRoute(
-          article: article,
+          article: widget.article,
         ));
       },
       child: Padding(
@@ -40,10 +48,10 @@ class TabBarViewItem extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             Container(
-              height: heightSize / 2.6,
+              height: widget.heightSize / 2.6,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(article.urlToImage ?? emptyImage),
+                  image: NetworkImage(widget.article.urlToImage ?? emptyImage),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -70,14 +78,15 @@ class TabBarViewItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AutoSizeText(
-                          article.title!,
+                          widget.article.title!,
                           style: theme?.textTheme.headline6,
                           minFontSize: 24,
                           maxLines: 3,
                         ),
                         const SizedBox(height: 10),
                         AutoSizeText(
-                          '${article.source?.name} • $date'.toUpperCase(),
+                          '${widget.article.source?.name} • $date'
+                              .toUpperCase(),
                           style: theme?.textTheme.subtitle2,
                         ),
                         Align(
@@ -105,4 +114,7 @@ class TabBarViewItem extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
