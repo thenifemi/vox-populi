@@ -44,8 +44,8 @@ class _TabBarViewItemState extends State<TabBarViewItem>
       },
       child: Padding(
         padding: const EdgeInsets.all(5.0),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
+        child: Column(
+          // alignment: Alignment.bottomCenter,
           children: [
             Container(
               height: widget.heightSize / 2.6,
@@ -54,7 +54,10 @@ class _TabBarViewItemState extends State<TabBarViewItem>
                   image: NetworkImage(widget.article.urlToImage ?? emptyImage),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
               ),
             ),
             Container(
