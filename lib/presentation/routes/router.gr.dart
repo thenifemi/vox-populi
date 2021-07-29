@@ -81,8 +81,10 @@ class AppRouter extends _i1.RootStackRouter {
         fullscreenDialog: true),
     ArticleWebviewWidgetRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i12.ArticleWebviewWidget();
+        builder: (data) {
+          final args = data.argsAs<ArticleWebviewWidgetRouteArgs>();
+          return _i12.ArticleWebviewWidget(
+              key: args.key, fullArticleLink: args.fullArticleLink);
         },
         fullscreenDialog: true)
   };
@@ -201,9 +203,22 @@ class ArticleScreenRouteArgs {
   final _i14.Article? article;
 }
 
-class ArticleWebviewWidgetRoute extends _i1.PageRouteInfo {
-  const ArticleWebviewWidgetRoute()
-      : super(name, path: '/article-webview-widget');
+class ArticleWebviewWidgetRoute
+    extends _i1.PageRouteInfo<ArticleWebviewWidgetRouteArgs> {
+  ArticleWebviewWidgetRoute({_i2.Key? key, required String fullArticleLink})
+      : super(name,
+            path: '/article-webview-widget',
+            args: ArticleWebviewWidgetRouteArgs(
+                key: key, fullArticleLink: fullArticleLink));
 
   static const String name = 'ArticleWebviewWidgetRoute';
+}
+
+class ArticleWebviewWidgetRouteArgs {
+  const ArticleWebviewWidgetRouteArgs(
+      {this.key, required this.fullArticleLink});
+
+  final _i2.Key? key;
+
+  final String fullArticleLink;
 }

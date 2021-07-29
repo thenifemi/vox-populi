@@ -12,7 +12,12 @@ import '../../core/constants/image_constants.dart';
 import '../../core/theme/theme.dart';
 
 class ArticleWebviewWidget extends StatefulWidget {
-  const ArticleWebviewWidget({Key? key}) : super(key: key);
+  const ArticleWebviewWidget({
+    Key? key,
+    required this.fullArticleLink,
+  }) : super(key: key);
+
+  final String fullArticleLink;
 
   @override
   _ArticleWebviewWidgetState createState() => _ArticleWebviewWidgetState();
@@ -66,8 +71,7 @@ class _ArticleWebviewWidgetState extends State<ArticleWebviewWidget> {
           ),
           Expanded(
             child: WebView(
-              initialUrl:
-                  "https://www.cbssports.com/golf/news/2021-british-open-leaderboard-live-coverage-schedule-golf-scores-today-in-round-2-on-friday/live/",
+              initialUrl: widget.fullArticleLink,
               navigationDelegate: (NavigationRequest request) {
                 Flushbar(
                   message: 'Sorry! You can not navigate out of this page.',

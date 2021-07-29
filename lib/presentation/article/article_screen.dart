@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 import '../../Application/theme/theme_bloc.dart';
 import '../../Domain/news/article.dart';
@@ -27,9 +28,8 @@ class ArticleScreen extends StatelessWidget {
     final theme = BlocProvider.of<ThemeBloc>(context).state.themeData;
     final appTheme = BlocProvider.of<ThemeBloc>(context).appTheme;
 
-    final pos =
-        "After an extremely fun first day at the 149th Open Championship, the tournament has started to take shape for whatever the next three days have in store at Royal St. George's. Louis Oosthuizen and Jo… [+1092 chars]"
-            .lastIndexOf('[');
+    final pos = article?.content?.lastIndexOf('[');
+    final date = DateFormat('EEEE d MMMM').format(article!.publishedAt!);
 
     return AppAnnotatedWidget(
       appTheme: appTheme,
@@ -47,9 +47,11 @@ class ArticleScreen extends StatelessWidget {
                     tag: 'article-image',
                     child: Container(
                       height: heightSize / 3.5,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(testNewsImage),
+                          image: NetworkImage(
+                            article!.urlToImage ?? emptyImage,
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -86,12 +88,13 @@ class ArticleScreen extends StatelessWidget {
                               ),
                               SizedBox(height: heightSize * 0.015),
                               AutoSizeText(
-                                'NPR • Wednesday 23 June'.toUpperCase(),
+                                '${article?.source?.name} • $date'
+                                    .toUpperCase(),
                                 style: theme?.textTheme.subtitle2,
                               ),
                               const SizedBox(height: 10),
                               AutoSizeText(
-                                "Supreme Court Restricts Police Powers To Enter A Home Without A Warrant - NPR",
+                                article!.title!,
                                 style: theme?.textTheme.headline6,
                                 minFontSize: 24,
                                 maxLines: 3,
@@ -110,8 +113,7 @@ class ArticleScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      "After an extremely fun first day at the 149th Open Championship, the tournament has started to take shape for whatever the next three days have in store at Royal St. George's. Louis Oosthuizen and Jo… [+1092 chars]"
-                          .substring(0, pos),
+                      article!.content!.substring(0, pos),
                       style: theme?.textTheme.subtitle1,
                       minFontSize: 20,
                     ),
@@ -120,7 +122,9 @@ class ArticleScreen extends StatelessWidget {
                       alignment: Alignment.topRight,
                       child: RawMaterialButton(
                         onPressed: () => context.router.push(
-                          const ArticleWebviewWidgetRoute(),
+                          ArticleWebviewWidgetRoute(
+                            fullArticleLink: article!.url!,
+                          ),
                         ),
                         child: const AutoSizeText(
                           "Read entire article",

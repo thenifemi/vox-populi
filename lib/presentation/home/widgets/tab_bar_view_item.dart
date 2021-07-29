@@ -5,9 +5,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:vox_populi/Domain/news/article.dart';
 
 import '../../../Application/theme/theme_bloc.dart';
+import '../../../Domain/news/article.dart';
 import '../../core/constants/color_constants.dart';
 import '../../core/constants/image_constants.dart';
 import '../../routes/router.gr.dart';
@@ -45,7 +45,6 @@ class _TabBarViewItemState extends State<TabBarViewItem>
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
-          // alignment: Alignment.bottomCenter,
           children: [
             Container(
               height: widget.heightSize / 2.6,
