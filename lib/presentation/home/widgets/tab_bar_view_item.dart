@@ -84,6 +84,7 @@ class _TabBarViewItemState extends State<TabBarViewItem>
                           style: theme?.textTheme.headline6,
                           minFontSize: 24,
                           maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 10),
                         AutoSizeText(
