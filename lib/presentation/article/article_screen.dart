@@ -68,12 +68,10 @@ class ArticleScreen extends StatelessWidget {
                         onPressed: () {
                           context.router.pop();
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.cancel_rounded,
                           size: 30,
-                          color: appTheme == AppTheme.light
-                              ? AppColors.eggshell
-                              : AppColors.grey,
+                          color: AppColors.eggshell,
                         ),
                       ),
                     ),
@@ -97,7 +95,7 @@ class ArticleScreen extends StatelessWidget {
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     AutoSizeText(
                       article?.content?.substring(0, pos) ??
                           'No content available.',
@@ -105,23 +103,38 @@ class ArticleScreen extends StatelessWidget {
                       minFontSize: 20,
                     ),
                     const SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: RawMaterialButton(
-                        onPressed: () => context.router.push(
-                          ArticleWebviewWidgetRoute(
-                            fullArticleLink: article!.url!,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Tooltip(
+                          message: 'Save this article',
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.bookmark_outline_rounded,
+                              color: appTheme == AppTheme.light
+                                  ? AppColors.greyAccent
+                                  : AppColors.eggshell,
+                              size: 30,
+                            ),
                           ),
                         ),
-                        child: const AutoSizeText(
-                          "Read entire article",
-                          style: TextStyle(
-                            fontFamily: 'Ubuntu',
-                            fontSize: 16.0,
-                            color: Colors.blue,
+                        RawMaterialButton(
+                          onPressed: () => context.router.push(
+                            ArticleWebviewWidgetRoute(
+                              fullArticleLink: article!.url!,
+                            ),
+                          ),
+                          child: const AutoSizeText(
+                            "Read entire article",
+                            style: TextStyle(
+                              fontFamily: 'Ubuntu',
+                              fontSize: 16.0,
+                              color: Colors.blue,
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
