@@ -46,7 +46,7 @@ class ArticleScreen extends StatelessWidget {
                   Hero(
                     tag: article!.title!,
                     child: Container(
-                      height: heightSize / 3.5,
+                      height: heightSize / 2.5,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
@@ -57,51 +57,23 @@ class ArticleScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    height: heightSize / 3.5,
-                    color: AppColors.greyAccent.withOpacity(0.4),
-                    child: ClipRRect(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 30.0,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: IconButton(
-                                  onPressed: () {
-                                    context.router.pop();
-                                  },
-                                  icon: Icon(
-                                    Icons.cancel_rounded,
-                                    size: 30,
-                                    color: appTheme == AppTheme.light
-                                        ? AppColors.eggshell
-                                        : AppColors.grey,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: heightSize * 0.015),
-                              AutoSizeText(
-                                '${article?.source?.name} • $date'
-                                    .toUpperCase(),
-                                style: theme?.textTheme.subtitle2,
-                              ),
-                              const SizedBox(height: 10),
-                              AutoSizeText(
-                                article!.title!,
-                                style: theme?.textTheme.headline6,
-                                minFontSize: 24,
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 30.0,
+                      horizontal: 10,
+                    ),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        onPressed: () {
+                          context.router.pop();
+                        },
+                        icon: Icon(
+                          Icons.cancel_rounded,
+                          size: 30,
+                          color: appTheme == AppTheme.light
+                              ? AppColors.eggshell
+                              : AppColors.grey,
                         ),
                       ),
                     ),
@@ -113,6 +85,19 @@ class ArticleScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    AutoSizeText(
+                      '${article?.source?.name} • $date'.toUpperCase(),
+                      style: theme?.textTheme.subtitle2,
+                    ),
+                    const SizedBox(height: 10),
+                    AutoSizeText(
+                      article!.title!,
+                      style: theme?.textTheme.headline6,
+                      minFontSize: 24,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 10),
                     AutoSizeText(
                       article?.content?.substring(0, pos) ??
                           'No content available.',
@@ -141,12 +126,6 @@ class ArticleScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: SvgPicture.asset(newsVectorImage),
-                ),
-              )
             ],
           ),
         ),
