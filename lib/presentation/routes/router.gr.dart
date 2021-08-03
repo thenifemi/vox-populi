@@ -67,10 +67,8 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     SearchScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<SearchScreenRouteArgs>(
-              orElse: () => const SearchScreenRouteArgs());
-          return _i10.SearchScreen(key: args.key);
+        builder: (_) {
+          return const _i10.SearchScreen();
         },
         fullscreenDialog: true),
     ArticleScreenRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
@@ -182,18 +180,10 @@ class EditProfileScreenRouteArgs {
   final _i13.User profile;
 }
 
-class SearchScreenRoute extends _i1.PageRouteInfo<SearchScreenRouteArgs> {
-  SearchScreenRoute({_i2.Key? key})
-      : super(name,
-            path: '/search-screen', args: SearchScreenRouteArgs(key: key));
+class SearchScreenRoute extends _i1.PageRouteInfo {
+  const SearchScreenRoute() : super(name, path: '/search-screen');
 
   static const String name = 'SearchScreenRoute';
-}
-
-class SearchScreenRouteArgs {
-  const SearchScreenRouteArgs({this.key});
-
-  final _i2.Key? key;
 }
 
 class ArticleScreenRoute extends _i1.PageRouteInfo<ArticleScreenRouteArgs> {

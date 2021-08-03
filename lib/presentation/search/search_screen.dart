@@ -16,9 +16,9 @@ import 'widgets/search_textfield.dart';
 import 'widgets/search_top_widget.dart';
 
 class SearchScreen extends StatelessWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
-  final formKey = GlobalKey<FormState>();
+  static final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
