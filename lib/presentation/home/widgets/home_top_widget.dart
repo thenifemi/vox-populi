@@ -56,7 +56,7 @@ class HomeTopWidget extends StatelessWidget {
           const Spacer(),
           IconButton(
             onPressed: () {
-              context.router.push(const SearchScreenRoute());
+              context.router.push(SearchScreenRoute());
             },
             icon: const Icon(
               Icons.search_rounded,

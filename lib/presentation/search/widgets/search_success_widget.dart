@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../Domain/news/search_news_response.dart';
+import '../../home/widgets/tab_bar_view_item.dart';
 
 class SearchSuccessWidget extends StatelessWidget {
   const SearchSuccessWidget({
@@ -12,15 +13,18 @@ class SearchSuccessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(),
-        ),
-        const SizedBox(
-          height: 50,
-        )
-      ],
+    final heightSize = MediaQuery.of(context).size.height;
+
+    return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      itemCount: searchResponse.articles?.length,
+      padding: const EdgeInsets.all(0),
+      itemBuilder: (context, i) {
+        return TabBarViewItem(
+          article: searchResponse.articles![i]!,
+          heightSize: heightSize,
+        );
+      },
     );
   }
 }

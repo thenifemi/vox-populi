@@ -10,10 +10,12 @@ class SearchTextfieldWidget extends StatelessWidget {
     Key? key,
     this.onSaved,
     this.validator,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class SearchTextfieldWidget extends StatelessWidget {
       textInputAction: TextInputAction.search,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textCapitalization: TextCapitalization.words,
+      onFieldSubmitted: onFieldSubmitted,
       style: theme?.textTheme.bodyText2,
       decoration: InputDecoration(
         hintText: 'Search any topic',

@@ -11,11 +11,14 @@ import '../core/constants/color_constants.dart';
 import '../core/constants/image_constants.dart';
 import '../core/theme/theme.dart';
 import 'widgets/search_initial_widget.dart';
+import 'widgets/search_success_widget.dart';
 import 'widgets/search_textfield.dart';
 import 'widgets/search_top_widget.dart';
 
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  SearchScreen({Key? key}) : super(key: key);
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +49,25 @@ class SearchScreen extends StatelessWidget {
                       appTheme: appTheme,
                     ),
                     SizedBox(height: heightSize * 0.03),
-                    SearchTextfieldWidget(
-                      onSaved: (v) {},
-                      validator: (v) {},
+                    Form(
+                      key: formKey,
+                      child: SearchTextfieldWidget(
+                        onSaved: (v) {
+                          BlocProvider.of<NewsBloc>(context).add(
+                            NewsEvent.searchNews(v!, 1),
+                          );
+                        },
+                        onFieldSubmitted: (v) {
+                          final form = formKey.currentState;
+                          if (form!.validate()) {
+                            form.save();
+                          }
+                        },
+                        validator: (v) {
+                          if (v!.isEmpty) {}
+                          return null;
+                        },
+                      ),
                     ),
                     SizedBox(height: heightSize * 0.03),
                     Expanded(
@@ -81,7 +100,9 @@ class SearchScreen extends StatelessWidget {
                         successForSearch: (result) {
                           final searchResponse = result.searchNewsResponse;
 
-                          return Container();
+                          return SearchSuccessWidget(
+                            searchResponse: searchResponse,
+                          );
                         },
                         failure: (_) {
                           return Center(
