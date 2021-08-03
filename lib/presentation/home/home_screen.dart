@@ -131,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                                               ),
                                             );
                                           },
-                                          failure: (result) {
+                                          failure: (_) {
                                             return Center(
                                               child: SvgPicture.asset(
                                                 errorVectorImage,

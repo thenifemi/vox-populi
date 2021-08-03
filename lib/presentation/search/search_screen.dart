@@ -1,16 +1,15 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:vox_populi/Application/news/news_bloc.dart';
-import 'package:vox_populi/injection.dart';
-import 'package:vox_populi/presentation/core/constants/color_constants.dart';
-import 'package:vox_populi/presentation/core/theme/theme.dart';
 
+import '../../Application/news/news_bloc.dart';
 import '../../Application/theme/theme_bloc.dart';
+import '../../injection.dart';
 import '../core/components/app_annotated_widget.dart';
+import '../core/constants/color_constants.dart';
 import '../core/constants/image_constants.dart';
+import '../core/theme/theme.dart';
 import 'widgets/search_initial_widget.dart';
 import 'widgets/search_textfield.dart';
 import 'widgets/search_top_widget.dart';
@@ -54,7 +53,15 @@ class SearchScreen extends StatelessWidget {
                     SizedBox(height: heightSize * 0.03),
                     Expanded(
                       child: state.maybeMap(
-                        orElse: () {},
+                        orElse: () {
+                          return Center(
+                            child: Image.asset(
+                              appTheme == AppTheme.light
+                                  ? voxIconLogoBlack
+                                  : voxIconLogoWhite,
+                            ),
+                          );
+                        },
                         initial: (_) {
                           return SearchInitialWidget(
                             theme: theme,
@@ -71,8 +78,16 @@ class SearchScreen extends StatelessWidget {
                             ),
                           );
                         },
-                        failure: failure,
-                        successForSearch: successForSearch,
+                        successForSearch: (_) {
+                          return Container();
+                        },
+                        failure: (_) {
+                          return Center(
+                            child: SvgPicture.asset(
+                              errorVectorImage,
+                            ),
+                          );
+                        },
                       ),
                     )
                   ],
