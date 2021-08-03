@@ -78,7 +78,9 @@ class SearchScreen extends StatelessWidget {
                             ),
                           );
                         },
-                        successForSearch: (_) {
+                        successForSearch: (result) {
+                          final searchResponse = result.searchNewsResponse;
+
                           return Container();
                         },
                         failure: (_) {
