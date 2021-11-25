@@ -1,3 +1,3 @@
 # Vox Populi
 
-Happening Now...
+Happening Now.
