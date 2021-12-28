@@ -1,5 +1,3 @@
 # Vox Populi
 
 Happening Now
-
-...
